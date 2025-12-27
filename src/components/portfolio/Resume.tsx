@@ -385,7 +385,7 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
               <div>
                 <SkillBar label="C / Java" level={content.skillLevels.advanced} width={75} />
                 <SkillBar label="Python" level={content.skillLevels.advanced} width={85}/>
-                <SkillBar label="PostreSQL" level={content.skillLevels.advanced} width={80} />
+                <SkillBar label="PostgreSQL" level={content.skillLevels.advanced} width={80} />
                 <SkillBar label="Bash / Linux" level={content.skillLevels.advanced} width={90} />
               </div>
               <div>

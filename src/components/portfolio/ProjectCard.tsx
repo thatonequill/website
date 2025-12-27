@@ -46,7 +46,6 @@ const ProjectCard = ({ project }) => {
       </div>
 
       {/* --- STAR CONTENT --- */}
-      {/* Using 'flex-1' ensures the Result box pushes to the bottom if cards are different heights */}
       <div className="space-y-5 text-foreground flex-1">
         
         {/* Situation */}

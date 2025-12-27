@@ -16,6 +16,7 @@ import InfoCard from "@/components/portfolio/InfoCard";
 import ProjectCard from "@/components/portfolio/ProjectCard";
 import Resume from "@/components/portfolio/Resume";
 import LanguageSwitch from "@/components/portfolio/LanguageSwitch"; // Import the button
+import AdvancedResume from "@/components/portfolio/AdvancedResume";
 
 export default function Portfolio() {
   // State for Theme
@@ -93,7 +94,7 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Code Snippet (You might want to translate the content inside too, or keep it as "code") */}
+        {/* Code Snippet */}
         <div className="flex-1 w-full max-w-md transform hover:scale-[1.02] transition-transform duration-500">
           <CodeBlock fileName="developerInfo.js">
             <p>
@@ -103,7 +104,7 @@ export default function Portfolio() {
               name: <span className="text-green-400">"Paul-Elouan"</span>,
             </p>
             <p className="pl-4">
-              role: <span className="text-green-400">"Étudiant Développeur"</span>,
+              role: <span className="text-green-400">"{t.hero.role}"</span>,
             </p>
             <p className="pl-4">
               skills: [<span className="text-green-400">"React"</span>, <span className="text-green-400">"PostgreSQL"</span>]
@@ -163,13 +164,15 @@ export default function Portfolio() {
       {/* --- Resume Section --- */}
       <div id="resume"></div>
       <Resume lang={lang} t={t.resume} />
+
+      <AdvancedResume lang={lang} />
       
       {/* --- Footer --- */}
       <footer id="contact" className="border-t border-border py-12 bg-card">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
-            <h4 className="text-xl font-bold mb-2">Prenons Contact</h4>
-            <p className="text-muted-foreground">Ouvert à des propositions de collaboration</p>
+            <h4 className="text-xl font-bold mb-2">{t.footer.contact}</h4>
+            <p className="text-muted-foreground">{t.footer.openToWork}</p>
           </div>
           
           <div className="flex gap-4">
