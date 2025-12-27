@@ -36,6 +36,7 @@ export default function Portfolio() {
           <div className="flex items-center gap-6 text-sm font-medium">
             <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
             <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
+            <a href="#resume" className="hover:text-primary transition-colors">CV</a>
             
             <button 
               onClick={() => setDarkMode(!darkMode)}
@@ -141,6 +142,7 @@ export default function Portfolio() {
       </section>
 
       {/* --- Resume Section --- */}
+      <div id="resume"></div>
       <Resume></Resume>
       
       {/* --- Footer --- */}
