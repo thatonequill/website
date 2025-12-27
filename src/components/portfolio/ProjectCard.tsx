@@ -3,7 +3,7 @@ import { ExternalLink } from 'lucide-react';
 
 const KeywordTag = ({ text }) => {
   // Logic to highlight Parcours C competencies 
-  const isPriority = ['gérer', 'conduire', 'collaborer'].includes(text.toLowerCase());
+  const isPriority = ['gérer', 'conduire', 'collaborer', 'manage', 'lead' , 'collaborate'].includes(text.toLowerCase());
   
   // Use 'bg-primary' for priority items to match the rose theme
   const baseClasses = "px-3 py-1 text-xs font-semibold rounded-full mr-2 mb-2 transition-colors";

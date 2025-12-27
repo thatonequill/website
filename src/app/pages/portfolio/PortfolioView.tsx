@@ -1,3 +1,4 @@
+// src/app/pages/portfolio/PortfolioView.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -5,14 +6,26 @@ import {
   Github, Linkedin, Mail, Moon, Sun, Terminal, 
   Code2, Cpu, Database
 } from "lucide-react";
-import { projects } from '../../data/portfolio/projects.js';
+
+// Import new data files
+import { projectsData } from '../../data/portfolio/projects.js';
+import { translations } from '../../data/portfolio/translations.js';
+
 import CodeBlock from "@/components/portfolio/CodeBlock";
 import InfoCard from "@/components/portfolio/InfoCard";
-import ProjectCard from "@/components/portfolio/ProjectCard"; // Corrected import path
+import ProjectCard from "@/components/portfolio/ProjectCard";
 import Resume from "@/components/portfolio/Resume";
+import LanguageSwitch from "@/components/portfolio/LanguageSwitch"; // Import the button
 
 export default function Portfolio() {
+  // State for Theme
   const [darkMode, setDarkMode] = useState(false);
+  // State for Language
+  const [lang, setLang] = useState<'en' | 'fr'>('en');
+
+  // Helper to get current text
+  const t = translations[lang];
+  const currentProjects = projectsData[lang];
 
   useEffect(() => {
     if (darkMode) {
@@ -33,11 +46,18 @@ export default function Portfolio() {
             <span>DevPortfolio</span>
           </div>
           
-          <div className="flex items-center gap-6 text-sm font-medium">
-            <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-            <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
-            <a href="#resume" className="hover:text-primary transition-colors">CV</a>
+          <div className="flex items-center gap-4 md:gap-6 text-sm font-medium">
+            <a href="#projects" className="hidden md:block hover:text-primary transition-colors">{t.nav.projects}</a>
+            <a href="#skills" className="hidden md:block hover:text-primary transition-colors">{t.nav.skills}</a>
+            <a href="#resume" className="hidden md:block hover:text-primary transition-colors">{t.nav.resume}</a>
             
+            {/* Language Switcher */}
+            <LanguageSwitch 
+              currentLang={lang} 
+              toggleLang={() => setLang(l => l === 'en' ? 'fr' : 'en')} 
+            />
+
+            {/* Dark Mode Toggle */}
             <button 
               onClick={() => setDarkMode(!darkMode)}
               className="p-2 rounded-full hover:bg-muted text-foreground transition-colors"
@@ -52,29 +72,28 @@ export default function Portfolio() {
       {/* --- Hero Section --- */}
       <header className="max-w-6xl mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center gap-12">
         <div className="flex-1 space-y-6">
-          {/* Badge updated to use Primary/Muted colors */}
           <div className="inline-block px-3 py-1 rounded-full bg-muted text-primary text-sm font-semibold tracking-wide uppercase">
-            En recherche de stage
+            {t.hero.badge}
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
             Full Stack <br />
-            <span className="text-primary">Étudiant Développeur</span>
+            <span className="text-primary">{t.hero.role}</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-lg">
-            Building scalable systems, optimizing algorithms, and crafting intuitive user interfaces. Passionate about clean code and open source.
+            {t.hero.description}
           </p>
           
           <div className="flex gap-4 pt-2">
             <a href="#contact" className="px-6 py-3 bg-primary text-primary-foreground hover:opacity-90 rounded-xl font-medium transition-all shadow-lg shadow-primary/20">
-              Me Contacter
+              {t.nav.contact}
             </a>
             <a href="https://github.com/ArianeGL" target="_blank" className="px-6 py-3 border border-border bg-card hover:bg-muted rounded-xl font-medium transition-colors flex items-center gap-2 text-card-foreground">
-              <Github size={20} /> GitHub
+              <Github size={20} /> {t.nav.github}
             </a>
           </div>
         </div>
 
-        {/* Code Snippet */}
+        {/* Code Snippet (You might want to translate the content inside too, or keep it as "code") */}
         <div className="flex-1 w-full max-w-md transform hover:scale-[1.02] transition-transform duration-500">
           <CodeBlock fileName="developerInfo.js">
             <p>
@@ -133,9 +152,9 @@ export default function Portfolio() {
 
       {/* --- Projects Section --- */}
       <section id="projects" className="py-20 max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12">Projets & Expériences</h2>
+        <h2 className="text-3xl font-bold mb-12">{lang === 'en' ? "Projects & Experience" : "Projets & Expériences"}</h2>
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
-          {projects.map(project => (
+          {currentProjects?.map(project => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
@@ -143,7 +162,7 @@ export default function Portfolio() {
 
       {/* --- Resume Section --- */}
       <div id="resume"></div>
-      <Resume></Resume>
+      <Resume lang={lang} t={t.resume} />
       
       {/* --- Footer --- */}
       <footer id="contact" className="border-t border-border py-12 bg-card">
