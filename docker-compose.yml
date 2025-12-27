@@ -1,0 +1,41 @@
+services:
+  website:
+    container_name: website-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      # Internal Docker Network: connects to 'db' on port 5432
+      - DATABASE_URL=postgresql://postgres:password@db:5432/website?schema=public
+      - WATCHPACK_POLLING=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    container_name: website-db
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: website
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      # Host:Container -> We expose port 5433 on your machine
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:

@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
+/* 1. Register your new Semantic Utilities here */
+@theme {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-border: var(--border);
+}
+
+/* 2. Define the actual colors (Light Mode) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* Warm Rose/Slate Theme based on your CV */
+    --background: #fff1f2; /* Rose-50 */
+    --foreground: #475569; /* Slate-600 */
+
+    --card: #ffffff; /* White */
+    --card-foreground: #1e293b; /* Slate-800 */
+
+    --primary: #be185d; /* Rose-700 (Pink/Red) */
+    --primary-foreground: #ffffff;
+
+    --muted: #fde2e4; /* Rose-100 */
+    --muted-foreground: #64748b; /* Slate-500 */
+
+    --border: #e2e8f0; /* Slate-200 */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* 3. Define the actual colors (Dark Mode) */
+.dark {
+    /* Deep Warm Grey/Slate Theme */
+    --background: #0c0a09; /* Stone-950 */
+    --foreground: #e2e8f0; /* Slate-200 */
+
+    --card: #1c1917; /* Stone-900 */
+    --card-foreground: #f8fafc; /* Slate-50 */
+
+    --primary: oklch(70.4% 0.191 22.216); /* Red-400 (Brighter for contrast) */
+    --primary-foreground: #0c0a09;
+
+    --muted: #292524; /* Stone-800 */
+    --muted-foreground: #94a3b8; /* Slate-400 */
+
+    --border: #44403c; /* Stone-700 */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base styles to apply the theme to the body */
+@layer base {
+    body {
+        background-color: var(--background);
+        color: var(--foreground);
+        /* Smooth transition for theme toggle */
+        transition-property: color, background-color, border-color,
+            text-decoration-color, fill, stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+    }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+    .result-box-forced {
+        /* FORCE Light Mode Styles */
+        background-color: oklch(97.9% 0.021 166.113) !important; /* Slate-50 */
+        color: #1e293b !important; /* Slate-800 */
+        border-color: #10b981 !important; /* Emerald-500 */
+    }
+
+    /* FORCE Dark Mode Styles */
+    .dark .result-box-forced {
+        background-color: rgba(
+            2,
+            44,
+            34,
+            0.3
+        ) !important; /* Emerald-950 with opacity */
+        color: #6ee7b7 !important; /* Emerald-300 */
+        border-color: #10b981 !important;
+    }
 }
