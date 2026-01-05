@@ -11,12 +11,11 @@ import {
 import { projectsData } from '../../data/portfolio/projects.js';
 import { translations } from '../../data/portfolio/translations.js';
 
+import LanguageSwitch from "@/components/portfolio/LanguageSwitch";
 import CodeBlock from "@/components/portfolio/CodeBlock";
 import InfoCard from "@/components/portfolio/InfoCard";
 import ProjectCard from "@/components/portfolio/ProjectCard";
-import Resume from "@/components/portfolio/Resume";
-import LanguageSwitch from "@/components/portfolio/LanguageSwitch"; // Import the button
-import AdvancedResume from "@/components/portfolio/AdvancedResume";
+import CVSection from "@/components/portfolio/CVSection";
 
 export default function Portfolio() {
   // State for Theme
@@ -28,6 +27,7 @@ export default function Portfolio() {
   const t = translations[lang];
   const currentProjects = projectsData[lang];
 
+  // Sets Theme
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -48,8 +48,8 @@ export default function Portfolio() {
           </div>
           
           <div className="flex items-center gap-4 md:gap-6 text-sm font-medium">
-            <a href="#projects" className="hidden md:block hover:text-primary transition-colors">{t.nav.projects}</a>
             <a href="#skills" className="hidden md:block hover:text-primary transition-colors">{t.nav.skills}</a>
+            <a href="#projects" className="hidden md:block hover:text-primary transition-colors">{t.nav.projects}</a>
             <a href="#resume" className="hidden md:block hover:text-primary transition-colors">{t.nav.resume}</a>
             
             {/* Language Switcher */}
@@ -72,6 +72,7 @@ export default function Portfolio() {
 
       {/* --- Hero Section --- */}
       <header className="max-w-6xl mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center gap-12">
+        {/* Main Info */}
         <div className="flex-1 space-y-6">
           <div className="inline-block px-3 py-1 rounded-full bg-muted text-primary text-sm font-semibold tracking-wide uppercase">
             {t.hero.badge}
@@ -107,7 +108,11 @@ export default function Portfolio() {
               role: <span className="text-green-400">"{t.hero.role}"</span>,
             </p>
             <p className="pl-4">
-              skills: [<span className="text-green-400">"React"</span>, <span className="text-green-400">"PostgreSQL"</span>]
+              skills: [
+                <span className="text-green-400">"C"</span>, 
+                <span className="text-green-400">"React"</span>, 
+                <span className="text-green-400">"PostgreSQL"</span>,
+              ]
             </p>
             <p>
               <span className="text-yellow-300">{"}"}</span>;
@@ -119,7 +124,7 @@ export default function Portfolio() {
       {/* --- Skills Section --- */}
       <section id="skills" className="bg-gradient-to-b from-background to-muted/50 py-20 border-y border-border">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Compétences Techniques</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center">{t.skills.title}</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <InfoCard icon={Code2} title="Web" variant="slate">
@@ -140,7 +145,7 @@ export default function Portfolio() {
               </ul>
             </InfoCard>
 
-            <InfoCard icon={Database} title="Base de Données" variant="slate">
+            <InfoCard icon={Database} title={t.skills.db} variant="slate">
               <ul className="space-y-2">
                 <li>PostgreSQL</li>
                 <li>Prisma ORM</li>
@@ -156,16 +161,17 @@ export default function Portfolio() {
         <h2 className="text-3xl font-bold mb-12">{lang === 'en' ? "Projects & Experience" : "Projets & Expériences"}</h2>
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
           {currentProjects?.map(project => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.id} project={project} lang={lang} />
           ))}
         </div>
       </section>
 
       {/* --- Resume Section --- */}
-      <div id="resume"></div>
-      <Resume lang={lang} t={t.resume} />
+      <section id="resume">
+        
+        <CVSection lang={lang} />
 
-      <AdvancedResume lang={lang} />
+      </section>
       
       {/* --- Footer --- */}
       <footer id="contact" className="border-t border-border py-12 bg-card">

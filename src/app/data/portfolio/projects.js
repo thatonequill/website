@@ -1,5 +1,7 @@
 // data/projects.js
 
+import { title } from "node:process";
+
 export const projects = [
 
 ];
@@ -93,6 +95,29 @@ const projectsFr = [
 			{ label: "Dépôt GitHub du projet", url: "https://github.com/ArianeGL/c1.2-srfc" },
 		]
 	},
+	{
+        id: "website-react-prisma",
+        title: "Portfolio Personnel & Theorycrafter",
+        context: "Projet Personnel (Autonomie)",
+        date: "Fin 2025 - Présent",
+        // Mots-clés valorisant la stack technique et les compétences BUT
+        keywords: ["Réaliser", "Optimiser", "React", "Prisma", "Full Stack", "Algorithmique"],
+        star: {
+            situation: "Dans le cadre de ma 3ème année de BUT, je devais réaliser un portfolio professionnel[cite: 8]. Pour dépasser le simple site vitrine, j'ai choisi d'intégrer un défi technique personnel : un outil de 'Theorycrafting' pour un jeu vidéo, permettant de noter la qualité d'un équipement.",
+            task: "Concevoir une application Full Stack remplissant deux objectifs : présenter mon profil professionnel et héberger un moteur de calcul complexe pour évaluer et classer les personnages des utilisateurs.",
+            actions: [
+                "Modélisation de la base de données avec Prisma (ORM) pour gérer les relations entre utilisateurs, équipements et statistiques (Compétence 3 : Administrer).",
+                "Développement d'un algorithme de 'scoring' comparant les statistiques de l'utilisateur à un modèle 'théorique parfait' pour attribuer un rang de performance (Compétence 2 : Optimiser).",
+                "Création d'une interface React dynamique permettant la saisie et la visualisation des progrès en temps réel.",
+                "Intégration de la section Portfolio pour répondre aux critères d'évaluation du BUT[cite: 12]."
+            ],
+            result: "Livraison d'une plateforme unique qui valide les attendus académiques tout en prouvant ma capacité à gérer des logiques métiers complexes (calculs, BDD) au sein d'un projet personnel."
+        },
+        links: [
+            { label: "Dépôt GitHub", url: "https://github.com/..." },
+            { label: "Site en ligne", url: "https://..." }
+        ]
+    }
 ];
 
 const projectsEn = [
@@ -179,6 +204,28 @@ const projectsEn = [
             { label: "Project GitHub Repository", url: "https://github.com/ArianeGL/c1.2-srfc" },
         ]
     },
+	{
+        id: "website-react-prisma",
+        title: "Personal Portfolio & Theorycrafter",
+        context: "Personal Project (Autonomy)",
+        date: "Late 2025 - Present",
+        keywords: ["Develop", "Optimize", "React", "Prisma", "Full Stack", "Algorithm"],
+        star: {
+            situation: "As part of my 3rd year at IUT, I needed to build a professional portfolio. To challenge myself beyond a static site, I combined this academic requirement with a personal need: creating a 'Theorycrafter' tool for a game to analyze and rank character builds.",
+            task: "Develop a scalable full-stack application capable of serving two distinct purposes: presenting my professional profile and hosting a complex, data-driven character builder with a ranking algorithm.",
+            actions: [
+                "Designed a relational database schema using Prisma (ORM) to manage characters, equipment stats, and user profiles.",
+                "Developed a scoring algorithm to compare user builds against a 'theoretical best' model, calculating a percentage-based efficiency rank (Competency: Optimize).",
+                "Built a responsive UI with React to allow users to input data and visualize their progress dynamically.",
+                "Integrated the portfolio section to showcase my skills and projects, meeting the BUT 3 assessment criteria."
+            ],
+            result: "A unified platform that fulfills the academic portfolio requirement while demonstrating advanced full-stack capabilities. The builder tool successfully tracks progress and provides accurate algorithmic rankings."
+        },
+        links: [
+            { label: "GitHub Repo", url: "https://github.com/..." },
+            { label: "Live Website", url: "https://..." }
+        ]
+    }
 ];
 
 export const projectsData = {

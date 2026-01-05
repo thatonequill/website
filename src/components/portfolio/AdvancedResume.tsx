@@ -109,7 +109,7 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
     <section id="resume" className="py-20 max-w-6xl mx-auto px-4">
       
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+      {/* <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
         <div>
           <h2 className="text-3xl font-bold mb-2 text-foreground">{t.title}</h2>
           <p className="text-muted-foreground">{t.subtitle}</p>
@@ -118,7 +118,7 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
           <Download size={18} />
           {t.download}
         </button>
-      </div>
+      </div> */}
 
       {/* Main Card Container */}
       <div className="bg-card rounded-3xl shadow-xl overflow-hidden border border-border grid grid-cols-1 lg:grid-cols-12 min-h-[1000px]">

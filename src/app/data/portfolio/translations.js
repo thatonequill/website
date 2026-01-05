@@ -14,6 +14,10 @@ export const translations = {
       role: "Student Developer",
       description: "Building scalable systems, optimizing algorithms, and crafting intuitive user interfaces. Passionate about clean code.",
     },
+    skills: {
+      title: "My Skills",
+      db: "Database",
+    },
     resume: {
       title: "My Resume",
       subtitle: "An overview of my academic and professional journey.",
@@ -29,7 +33,8 @@ export const translations = {
         experience: "Professional Experience",
         education: "Education",
         programming: "Programming Languages",
-        interests: "Interests"
+        interests: "Interests",
+        competencies: "Competencies"
       },
       competencyDetails: {
         conduire: { 
@@ -101,6 +106,10 @@ export const translations = {
       role: "Étudiant Développeur",
       description: "Conception de systèmes évolutifs, optimisation d'algorithmes et création d'interfaces intuitives. Passionné par le code propre.",
     },
+    skills: {
+      title: "Compétences Techniques",
+      db: "Base de données",
+    },
     resume: {
       title: "Mon Curriculum Vitae",
       subtitle: "Un aperçu de mon parcours académique et professionnel.",
@@ -116,13 +125,13 @@ export const translations = {
         experience: "Expériences Professionnelles",
         education: "Diplômes et Formations",
         programming: "Langages de Programmation",
-        interests: "Centres d'intérêt"
+        interests: "Centres d'intérêt",
+        competencies: "Compétences"
       },
-competencyDetails: {
+      competencyDetails: {
         conduire: { 
           title: "Conduire", 
           desc: "Identifier les besoins et piloter le projet",
-          // ADDED:
           examples: [
             "Co-construction d'une solution avec 2 agences pilotes (Synergie).",
             "Rédaction du GDD pour définir le scope MVP (aev.LastByte)."

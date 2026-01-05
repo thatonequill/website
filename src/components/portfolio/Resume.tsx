@@ -240,21 +240,19 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
   return (
     <section id="resume" className="py-20 max-w-6xl mx-auto px-4">
       
-      {/* Download Header */}
-      <div className="flex justify-between items-end mb-8">
+      {/* Header */}
+      {/* <div className="flex justify-between items-end mb-8">
         <div>
           <h2 className="text-3xl font-bold mb-2">{content.titles.main}</h2>
           <p className="text-muted-foreground">
             {content.titles.subtitle}
           </p>
         </div>
-        {/* Uncomment if you want the download button
         <button className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition-all shadow-lg shadow-primary/20">
           <Download size={18} />
           {content.titles.download}
         </button> 
-        */}
-      </div>
+      </div> */}
 
       {/* CV Paper Container */}
       <div className="bg-card rounded-3xl shadow-xl overflow-hidden border border-border grid grid-cols-1 lg:grid-cols-12 min-h-[1000px]">

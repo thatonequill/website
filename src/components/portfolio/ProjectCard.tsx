@@ -18,7 +18,7 @@ const KeywordTag = ({ text }) => {
   );
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, lang }) => {
   return (
     <div className="flex flex-col h-full bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 group">
       
@@ -61,7 +61,7 @@ const ProjectCard = ({ project }) => {
         {/* Task */}
         <div className="relative pl-4 border-l-2 border-muted">
           <span className="text-xs font-extrabold uppercase tracking-wider text-muted-foreground block mb-1">
-            Tâche
+            {lang==='fr' ? 'Tâche' : 'Task'}
           </span>
           <p className="text-sm leading-relaxed opacity-90">
             {project.star.task}
@@ -90,7 +90,7 @@ const ProjectCard = ({ project }) => {
           <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
           
           <span className="font-bold uppercase text-xs tracking-wider opacity-90">
-            Résultat
+            {lang==='fr' ? 'Résultat' : 'Result'}
           </span>
         </div>
         
