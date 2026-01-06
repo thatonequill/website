@@ -160,6 +160,7 @@ export default function Portfolio() {
       <section id="projects" className="py-20 max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-12">{lang === 'en' ? "Projects & Experience" : "Projets & Expériences"}</h2>
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* project maps */}
           {currentProjects?.map(project => (
             <ProjectCard key={project.id} project={project} lang={lang} />
           ))}
