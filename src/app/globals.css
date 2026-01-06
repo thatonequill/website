@@ -121,7 +121,7 @@
     }
 
     /* 5. Force Grid Layout */
-    .grid-cols-1 {
+    #resume.grid-cols-1 {
         display: grid !important;
         grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
     }

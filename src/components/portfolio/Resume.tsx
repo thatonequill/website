@@ -216,11 +216,13 @@ const TimelineItem = ({
 );
 
 const SkillBar = ({ label, level, width }: { label: string, level?: string, width?: number}) => (
-  <div className="mb-3 print:mb-2">
-    <div className="flex justify-between mb-1">
+  <div className="mb-3 print:mb-1">
+    
+    <div className="flex justify-between mb-1 print:mb-0">
       <span className="text-sm font-medium text-card-foreground print:text-xs">{label}</span>
       {level && <span className="text-xs text-muted-foreground print:text-[10px]">{level}</span>}
     </div>
+    
     <div className="w-full bg-muted rounded-full h-2 print:h-1.5">
       <div className="bg-primary h-2 print:h-1.5 rounded-full opacity-80" style={{ width: width ? `${width}%` : '50%'}}></div>
     </div>
@@ -296,14 +298,13 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
 
             <hr className="border-border" />
 
-            {/* Languages - FIXED WIDTH ISSUE */}
+            {/* Languages */}
             <div>
               <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 print:mb-2">
                 <User size={18} className="text-primary" /> {content.titles.languages}
               </h3>
               <div className="space-y-3 print:space-y-2">
                 {content.languages.map((l, i) => (
-                  // Added w-full to ensure it spans the width
                   <div key={i} className="flex justify-between w-full">
                     <span className="text-muted-foreground print:text-xs">{l.name}</span>
                     <span className="font-semibold text-foreground print:text-xs">{l.level}</span>
@@ -341,7 +342,6 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
         </div>
 
         {/* --- RIGHT COLUMN (Main Content) --- */}
-        {/* Added print:p-6 and print:space-y-6 to reduce spacing */}
         <div className="lg:col-span-8 p-8 md:p-12 space-y-12 bg-card print:p-6 print:space-y-6">
           
           {/* Experience Section */}
@@ -378,10 +378,13 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
             </div>
           </div>
 
-           {/* Coding Skills Section */}
-           <div>
+          {/* Coding Skills Section */}
+          <div>
             <SectionTitle icon={Code} title={content.titles.programming} />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print:gap-4 print:grid-cols-2">
+            
+            {/* Added 'print:grid-cols-1' and 'print:gap-2' */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print:grid-cols-1 print:gap-2">
+              
               <div>
                 <SkillBar label="C / Java" level={content.skillLevels.advanced} width={75} />
                 <SkillBar label="Python" level={content.skillLevels.advanced} width={85}/>
