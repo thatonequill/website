@@ -12,6 +12,9 @@ import {
   Download
 } from 'lucide-react';
 
+import { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+
 // --- Types ---
 type Language = 'en' | 'fr';
 
@@ -174,46 +177,38 @@ const resumeData = {
 // --- Helper Components ---
 
 const SectionTitle = ({ icon: Icon, title }: { icon: any, title: string }) => (
-  <div className="flex items-center gap-3 mb-6">
-    <div className="p-2 rounded-lg bg-primary/10 text-primary">
-      <Icon size={20} />
+  // Reduced margin-bottom for print
+  <div className="flex items-center gap-3 mb-6 print:mb-3">
+    <div className="p-2 rounded-lg bg-primary/10 text-primary print:p-1">
+      <Icon size={20} className="print:w-4 print:h-4" />
     </div>
-    <h3 className="text-xl font-bold uppercase tracking-wide text-foreground">
+    <h3 className="text-xl font-bold uppercase tracking-wide text-foreground print:text-lg">
       {title}
     </h3>
   </div>
 );
 
 const TimelineItem = ({ 
-  role, 
-  company, 
-  period, 
-  location, 
-  description 
+  role, company, period, location, description 
 }: { 
-  role: string, 
-  company: string, 
-  period: string, 
-  location: string, 
-  description?: string 
+  role: string, company: string, period: string, location: string, description?: string 
 }) => (
-  <div className="relative pl-8 pb-8 border-l-2 border-muted last:pb-0 last:border-l-0">
-    {/* Dot */}
-    <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-card"></div>
+  <div className="relative pl-8 pb-8 print:pb-4 border-l-2 border-muted last:pb-0 last:border-l-0">
+    <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-card print:w-3 print:h-3 print:-left-[7px]"></div>
     
     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
-      <h4 className="text-lg font-bold text-card-foreground">{role}</h4>
-      <span className="text-sm font-medium text-primary/80 bg-primary/5 px-2 py-0.5 rounded-md">
+      <h4 className="text-lg font-bold text-card-foreground print:text-base">{role}</h4>
+      <span className="text-sm font-medium text-primary/80 bg-primary/5 px-2 py-0.5 rounded-md print:text-xs">
         {period}
       </span>
     </div>
     
-    <div className="text-sm text-muted-foreground font-semibold mb-2">
+    <div className="text-sm text-muted-foreground font-semibold mb-2 print:text-xs print:mb-1">
       {company} • {location}
     </div>
     
     {description && (
-      <p className="text-sm text-muted-foreground leading-relaxed">
+      <p className="text-sm text-muted-foreground leading-relaxed print:text-xs print:leading-snug">
         {description}
       </p>
     )}
@@ -221,104 +216,110 @@ const TimelineItem = ({
 );
 
 const SkillBar = ({ label, level, width }: { label: string, level?: string, width?: number}) => (
-  <div className="mb-3">
+  <div className="mb-3 print:mb-2">
     <div className="flex justify-between mb-1">
-      <span className="text-sm font-medium text-card-foreground">{label}</span>
-      {level && <span className="text-xs text-muted-foreground">{level}</span>}
+      <span className="text-sm font-medium text-card-foreground print:text-xs">{label}</span>
+      {level && <span className="text-xs text-muted-foreground print:text-[10px]">{level}</span>}
     </div>
-    <div className="w-full bg-muted rounded-full h-2">
-      <div className="bg-primary h-2 rounded-full opacity-80" style={{ width: width ? `${width}%` : '50%'}}></div>
+    <div className="w-full bg-muted rounded-full h-2 print:h-1.5">
+      <div className="bg-primary h-2 print:h-1.5 rounded-full opacity-80" style={{ width: width ? `${width}%` : '50%'}}></div>
     </div>
   </div>
 );
 
-// --- Main CV Component ---
+// --- Main Component ---
 
 export default function Resume({ lang = 'en' }: ResumeProps) {
+  const componentRef = useRef<HTMLDivElement>(null);
+
+  const handleDownload = useReactToPrint({
+    contentRef: componentRef, // Updated for newer versions
+    documentTitle: 'CV_Paul-Elouan_Guyard-Lecerf',
+  });
+
   const content = resumeData[lang];
 
   return (
-    <section id="resume" className="py-20 max-w-6xl mx-auto px-4">
+    <section className="py-20 max-w-6xl mx-auto px-4 print:py-0 print:px-0">
       
-      {/* Header */}
-      {/* <div className="flex justify-between items-end mb-8">
-        <div>
-          <h2 className="text-3xl font-bold mb-2">{content.titles.main}</h2>
-          <p className="text-muted-foreground">
-            {content.titles.subtitle}
-          </p>
-        </div>
-        <button className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition-all shadow-lg shadow-primary/20">
-          <Download size={18} />
-          {content.titles.download}
-        </button> 
-      </div> */}
+      <button 
+        onClick={handleDownload}
+        className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition-all shadow-lg shadow-primary/20 mb-8"
+      >
+        <Download size={18} />
+        PDF
+      </button>
 
       {/* CV Paper Container */}
-      <div className="bg-card rounded-3xl shadow-xl overflow-hidden border border-border grid grid-cols-1 lg:grid-cols-12 min-h-[1000px]">
+      <div 
+        id="resume"
+        ref={componentRef} 
+        className="bg-card rounded-3xl shadow-xl overflow-hidden border border-border grid grid-cols-1 lg:grid-cols-12 min-h-[1000px] print:min-h-0 print:shadow-none print:rounded-none print:border-none"
+      >
         
         {/* --- LEFT COLUMN (Sidebar) --- */}
-        <div className="lg:col-span-4 bg-muted/30 p-8 border-r border-border">
+        {/* Added print:p-6 to reduce padding */}
+        <div className="lg:col-span-4 bg-muted/30 p-8 border-r border-border print:p-6">
           
           {/* Profile Header */}
-          <div className="text-center lg:text-left mb-10">
-            {/* Placeholder for Photo */}
-            <div className="w-32 h-32 mx-auto lg:mx-0 rounded-full bg-gradient-to-br from-primary to-purple-600 mb-6 border-4 border-card shadow-md flex items-center justify-center">
+          <div className="text-center lg:text-left mb-10 print:mb-6">
+            <div className="w-32 h-32 mx-auto lg:mx-0 rounded-full bg-gradient-to-br from-primary to-purple-600 mb-6 border-4 border-card shadow-md flex items-center justify-center print:w-24 print:h-24 print:mb-4">
                 <span className="text-white text-3xl font-bold">PG</span>
             </div>
-            <h1 className="text-3xl font-extrabold text-foreground leading-tight mb-2">
+            <h1 className="text-3xl font-extrabold text-foreground leading-tight mb-2 print:text-2xl">
               Paul-Elouan <br/>
               <span className="text-primary">Guyard-Lecerf</span>
             </h1>
-            <p className="text-lg font-medium text-muted-foreground">
+            <p className="text-lg font-medium text-muted-foreground print:text-base">
               {content.profile.role}
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-8 print:space-y-6">
             {/* Contact Info */}
-            <div className="space-y-4 text-sm">
+            <div className="space-y-4 text-sm print:space-y-2 print:text-xs">
               <div className="flex items-center gap-3 text-muted-foreground">
-                <Mail size={16} className="text-primary" />
-                <a href="mailto:paulelouan.guyardlecerf@proton.me" className="hover:text-primary transition-colors">
+                <Mail size={16} className="text-primary min-w-[16px]" />
+                <a href="mailto:paulelouan.guyardlecerf@proton.me" className="hover:text-primary transition-colors break-all">
                   paulelouan.guyardlecerf@proton.me
                 </a>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground">
-                <MapPin size={16} className="text-primary" />
+                <MapPin size={16} className="text-primary min-w-[16px]" />
                 <span>{content.profile.location}</span>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground">
-                <Phone size={16} className="text-primary" />
+                <Phone size={16} className="text-primary min-w-[16px]" />
                 <span>+33 6 64 96 77 67</span>
               </div>
             </div>
 
             <hr className="border-border" />
 
-            {/* Languages */}
+            {/* Languages - FIXED WIDTH ISSUE */}
             <div>
-              <h3 className="font-bold text-foreground mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 print:mb-2">
                 <User size={18} className="text-primary" /> {content.titles.languages}
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-3 print:space-y-2">
                 {content.languages.map((l, i) => (
-                  <div key={i} className="flex justify-between">
-                    <span className="text-muted-foreground">{l.name}</span>
-                    <span className="font-semibold text-foreground">{l.level}</span>
+                  // Added w-full to ensure it spans the width
+                  <div key={i} className="flex justify-between w-full">
+                    <span className="text-muted-foreground print:text-xs">{l.name}</span>
+                    <span className="font-semibold text-foreground print:text-xs">{l.level}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Atouts / Soft Skills */}
+            {/* Soft Skills */}
             <div>
-              <h3 className="font-bold text-foreground mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 print:mb-2">
                 <Heart size={18} className="text-primary" /> {content.titles.softSkills}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {content.softSkills.map((skill) => (
-                  <span key={skill} className="px-3 py-1 bg-card border border-border rounded-full text-xs font-medium text-muted-foreground">
+                  <span key={skill} className="px-3 py-1 bg-card border border-border rounded-full text-xs font-medium text-muted-foreground print:px-2 print:py-0.5 print:text-[10px]">
                     {skill}
                   </span>
                 ))}
@@ -327,10 +328,10 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
 
             {/* Logiciels */}
             <div>
-              <h3 className="font-bold text-foreground mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 print:mb-2">
                 <Terminal size={18} className="text-primary" /> {content.titles.software}
               </h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <ul className="space-y-2 text-sm text-muted-foreground print:text-xs print:space-y-1">
                 {content.software.map((sw, i) => (
                   <li key={i}><strong className="text-foreground">{sw.name}</strong> : {sw.detail}</li>
                 ))}
@@ -340,12 +341,13 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
         </div>
 
         {/* --- RIGHT COLUMN (Main Content) --- */}
-        <div className="lg:col-span-8 p-8 md:p-12 space-y-12">
+        {/* Added print:p-6 and print:space-y-6 to reduce spacing */}
+        <div className="lg:col-span-8 p-8 md:p-12 space-y-12 bg-card print:p-6 print:space-y-6">
           
           {/* Experience Section */}
           <div>
             <SectionTitle icon={Briefcase} title={content.titles.experience} />
-            <div className="space-y-2">
+            <div className="space-y-2 print:space-y-2">
               {content.experience.map((job, index) => (
                 <TimelineItem 
                   key={index}
@@ -362,7 +364,7 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
           {/* Education Section */}
           <div>
             <SectionTitle icon={GraduationCap} title={content.titles.education} />
-            <div className="space-y-2">
+            <div className="space-y-2 print:space-y-2">
               {content.education.map((edu, index) => (
                 <TimelineItem 
                   key={index}
@@ -379,7 +381,7 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
            {/* Coding Skills Section */}
            <div>
             <SectionTitle icon={Code} title={content.titles.programming} />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 print:gap-4 print:grid-cols-2">
               <div>
                 <SkillBar label="C / Java" level={content.skillLevels.advanced} width={75} />
                 <SkillBar label="Python" level={content.skillLevels.advanced} width={85}/>
@@ -396,9 +398,9 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
           </div>
 
           {/* Interests */}
-          <div className="bg-muted/30 rounded-2xl p-6 border border-border">
-            <h3 className="font-bold text-foreground mb-3">{content.titles.interests}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+          <div className="bg-muted/30 rounded-2xl p-6 border border-border print:p-4 print:bg-gray-50">
+            <h3 className="font-bold text-foreground mb-3 print:mb-1 print:text-sm">{content.titles.interests}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed print:text-xs">
               {content.interests}
             </p>
           </div>
