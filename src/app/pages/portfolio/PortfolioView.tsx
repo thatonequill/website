@@ -186,7 +186,7 @@ export default function Portfolio() {
             <a href="mailto:paulelouan.guyardlecerf@proton.me" className="p-3 rounded-full bg-muted text-foreground hover:bg-primary hover:text-white transition-colors">
               <Mail size={20} />
             </a>
-            <a href="www.linkedin.com/in/paul-elouan-guyard-lecerf-7666692a9" className="p-3 rounded-full bg-muted text-foreground hover:bg-primary hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/in/paul-elouan-guyard-lecerf-7666692a9" className="p-3 rounded-full bg-muted text-foreground hover:bg-primary hover:text-white transition-colors">
               <Linkedin size={20} />
             </a>
             <a href="https://github.com/ArianeGL" className="p-3 rounded-full bg-muted text-foreground hover:bg-primary hover:text-white transition-colors">
