@@ -1,11 +1,11 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 
-const KeywordTag = ({ text }) => {
+const KeywordTag = ({ text }: { text: string }) => {
   // Logic to highlight Parcours C competencies 
   const isPriority = ['gérer', 'conduire', 'collaborer', 'manage', 'lead' , 'collaborate'].includes(text.toLowerCase());
   
-  // Use 'bg-primary' for priority items to match the rose theme
+  // Use 'bg-primary' for priority items to match the rose theme 
   const baseClasses = "px-3 py-1 text-xs font-semibold rounded-full mr-2 mb-2 transition-colors";
   const colorClasses = isPriority 
     ? "bg-primary text-primary-foreground shadow-sm" // Highlights nicely in pink/rose
@@ -18,7 +18,7 @@ const KeywordTag = ({ text }) => {
   );
 };
 
-const ProjectCard = ({ project, lang }) => {
+const ProjectCard = ({ project, lang }: { project: any; lang: string }) => {
   return (
     <div className="flex flex-col h-full bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 group">
       
@@ -39,7 +39,7 @@ const ProjectCard = ({ project, lang }) => {
       {/* --- TAGS --- */}
       <div className="mb-6">
         <div className="flex flex-wrap">
-          {project.keywords.map((tag, index) => (
+          {project.keywords.map((tag: string, index: number) => (
             <KeywordTag key={index} text={tag} />
           ))}
         </div>
@@ -74,7 +74,7 @@ const ProjectCard = ({ project, lang }) => {
             Action
           </span>
           <ul className="list-disc list-outside pl-4 space-y-1 text-sm leading-relaxed opacity-90">
-            {project.star.actions.map((action, i) => (
+            {project.star.actions.map((action: string, i: number) => (
               <li key={i}>{action}</li>
             ))}
           </ul>
@@ -92,7 +92,7 @@ const ProjectCard = ({ project, lang }) => {
           <span className="font-bold uppercase text-xs tracking-wider opacity-90">
             {lang==='fr' ? 'Résultat' : 'Result'}
           </span>
-        </div>
+        </div> 
         
         <p className="text-sm font-medium leading-relaxed">
           {project.star.result}
@@ -102,8 +102,8 @@ const ProjectCard = ({ project, lang }) => {
       {/* --- LINKS --- */}
       {project.links && (
         <div className="mt-6 pt-4 border-t border-dashed border-border flex flex-wrap gap-4">
-          {project.links.map((link, i) => (
-            <a 
+          {project.links.map((link: { url: string; label: string }, i: number) => (
+            <a
               key={i} 
               href={link.url} 
               target="_blank" 
