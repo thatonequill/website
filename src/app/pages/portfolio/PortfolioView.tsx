@@ -16,6 +16,7 @@ import CodeBlock from "@/components/portfolio/CodeBlock";
 import InfoCard from "@/components/portfolio/InfoCard";
 import ProjectCard from "@/components/portfolio/ProjectCard";
 import CVSection from "@/components/portfolio/CVSection";
+import HomeButton from "@/components/homeButton";
 
 export default function Portfolio() {
   // State for Theme
@@ -43,7 +44,7 @@ export default function Portfolio() {
       <nav className="sticky top-0 z-50 w-full backdrop-blur-md border-b border-border bg-background/80">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="font-bold text-xl flex items-center gap-2 text-primary">
-            <Terminal />
+            <HomeButton icon={Terminal} />
             <span>DevPortfolio</span>
           </div>
           
