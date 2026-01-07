@@ -103,13 +103,13 @@ const projectsFr = [
         // Mots-clés valorisant la stack technique et les compétences BUT
         keywords: ["Réaliser", "Optimiser", "React", "Prisma", "Full Stack", "Algorithmique"],
         star: {
-            situation: "Dans le cadre de ma 3ème année de BUT, je devais réaliser un portfolio professionnel[cite: 8]. Pour dépasser le simple site vitrine, j'ai choisi d'intégrer un défi technique personnel : un outil de 'Theorycrafting' pour un jeu vidéo, permettant de noter la qualité d'un équipement.",
+            situation: "Dans le cadre de ma 3ème année de BUT, je devais réaliser un portfolio professionnel. Pour dépasser le simple site vitrine, j'ai choisi d'intégrer un défi technique personnel : un outil de 'Theorycrafting' pour un jeu vidéo, permettant de noter la qualité d'un équipement.",
             task: "Concevoir une application Full Stack remplissant deux objectifs : présenter mon profil professionnel et héberger un moteur de calcul complexe pour évaluer et classer les personnages des utilisateurs.",
             actions: [
                 "Modélisation de la base de données avec Prisma (ORM) pour gérer les relations entre utilisateurs, équipements et statistiques (Compétence 3 : Administrer).",
                 "Développement d'un algorithme de 'scoring' comparant les statistiques de l'utilisateur à un modèle 'théorique parfait' pour attribuer un rang de performance (Compétence 2 : Optimiser).",
                 "Création d'une interface React dynamique permettant la saisie et la visualisation des progrès en temps réel.",
-                "Intégration de la section Portfolio pour répondre aux critères d'évaluation du BUT[cite: 12]."
+                "Intégration de la section Portfolio pour répondre aux critères d'évaluation du BUT."
             ],
             result: "Livraison d'une plateforme unique qui valide les attendus académiques tout en prouvant ma capacité à gérer des logiques métiers complexes (calculs, BDD) au sein d'un projet personnel."
         },
