@@ -112,7 +112,7 @@ export default function Portfolio() {
               skills: [
                 <span className="text-green-400">"C"</span>, 
                 <span className="text-green-400">"React"</span>, 
-                <span className="text-green-400">"PostgreSQL"</span>,
+                <span className="text-green-400">"PostgreSQL"</span>
               ]
             </p>
             <p>
