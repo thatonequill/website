@@ -107,19 +107,6 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
 
   return (
     <section id="resume" className="py-20 max-w-6xl mx-auto px-4">
-      
-      {/* Header */}
-      {/* <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
-        <div>
-          <h2 className="text-3xl font-bold mb-2 text-foreground">{t.title}</h2>
-          <p className="text-muted-foreground">{t.subtitle}</p>
-        </div>
-        <button className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-full font-medium hover:opacity-90 transition-all shadow-lg shadow-primary/20">
-          <Download size={18} />
-          {t.download}
-        </button>
-      </div> */}
-
       {/* Main Card Container */}
       <div className="bg-card rounded-3xl shadow-xl overflow-hidden border border-border grid grid-cols-1 lg:grid-cols-12 min-h-[1000px]">
         
@@ -128,10 +115,11 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
           
           {/* Profile */}
           <div className="text-center lg:text-left">
-            <div className="w-28 h-28 mx-auto lg:mx-0 rounded-full bg-gradient-to-br from-primary to-purple-600 mb-6 border-4 border-card shadow-md overflow-hidden relative">
-               {/* Replace with actual <img> tag */}
-               <div className="w-full h-full flex items-center justify-center text-white text-2xl font-bold">PG</div>
-            </div>
+            <img
+              src="/pfp.avif"
+              alt="Paul-Elouan Guyard-Lecerf"
+              className="w-32 h-32 mx-auto lg:mx-0 rounded-full bg-gradient-to-br from-primary to-purple-600 mb-6 border-4 border-card shadow-md flex items-center justify-center print:w-24 print:h-24 print:mb-4"
+            />
             <h1 className="text-2xl font-extrabold text-foreground leading-tight mb-2">
               Paul-Elouan <br/>
               <span className="text-primary">Guyard-Lecerf</span>

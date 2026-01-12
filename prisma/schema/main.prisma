@@ -13,6 +13,5 @@ model User {
     email String @unique
 
     // Relations to game-specific builds
-    // (Prisma automatically finds "ZZZBuild" even if it's in another file)
     zzzBuilds ZZZBuild[]
 }

@@ -26,6 +26,9 @@ const projectsFr = [
 			],
 			result: "Déploiement d'une solution permettant une communication instantanée. Accélération significative du processus de placement des intérimaires sur les missions urgentes."
 		},
+        imageUrl: [
+            "/images/synergie.jpg"
+        ],
 		links: [
 		]
 	},
@@ -138,6 +141,9 @@ const projectsEn = [
             ],
             result: "Deployed a solution enabling instant communication. Significantly accelerated the placement process for temporary workers on urgent missions."
         },
+        imageUrl: [
+            "/images/synergie.jpg"
+        ],
         links: [
         ]
     },

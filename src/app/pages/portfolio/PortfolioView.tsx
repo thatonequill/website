@@ -6,6 +6,8 @@ import {
   Github, Linkedin, Mail, Moon, Sun, Terminal, 
   Code2, Cpu, Database
 } from "lucide-react";
+import Image from "next/image";
+import pfp from "/pfp.avif";
 
 // Import new data files
 import { projectsData } from '../../data/portfolio/projects.js';
@@ -85,7 +87,7 @@ export default function Portfolio() {
           <p className="text-lg text-muted-foreground max-w-lg">
             {t.hero.description}
           </p>
-          
+
           <div className="flex gap-4 pt-2">
             <a href="#contact" className="px-6 py-3 bg-primary text-primary-foreground hover:opacity-90 rounded-xl font-medium transition-all shadow-lg shadow-primary/20">
               {t.nav.contact}
@@ -96,8 +98,14 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Code Snippet */}
-        <div className="flex-1 w-full max-w-md transform hover:scale-[1.02] transition-transform duration-500">
+        {/* Right Column: Code Snippet & Image */}
+        {/* Added flex flex-col and gap-6 here to manage vertical stacking and spacing */}
+        <div className="flex-1 w-full max-w-md flex flex-col gap-6 transform hover:scale-[1.02] transition-transform duration-500">
+          <img
+            src="/pfp.avif"
+            alt="Paul-Elouan Guyard-Lecerf"
+            className="w-full h-auto rounded-xl shadow-lg object-cover"
+          />
           <CodeBlock fileName="developerInfo.js">
             <p>
               <span className="text-purple-400">const</span> developer = <span className="text-yellow-300">{"{"}</span>
@@ -110,8 +118,8 @@ export default function Portfolio() {
             </p>
             <p className="pl-4">
               skills: [
-                <span className="text-green-400">"C"</span>, 
-                <span className="text-green-400">"React"</span>, 
+                <span className="text-green-400">"C"</span>,
+                <span className="text-green-400">"React"</span>,
                 <span className="text-green-400">"PostgreSQL"</span>
               ]
             </p>
@@ -160,7 +168,7 @@ export default function Portfolio() {
       {/* --- Projects Section --- */}
       <section id="projects" className="py-20 max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-12">{lang === 'en' ? "Projects & Experience" : "Projets & Expériences"}</h2>
-        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-8">
           {/* project maps */}
           {currentProjects?.map(project => (
             <ProjectCard key={project.id} project={project} lang={lang} />

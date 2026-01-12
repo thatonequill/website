@@ -260,14 +260,15 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
       >
         
         {/* --- LEFT COLUMN (Sidebar) --- */}
-        {/* Added print:p-6 to reduce padding */}
         <div className="lg:col-span-4 bg-muted/30 p-8 border-r border-border print:p-6">
           
           {/* Profile Header */}
           <div className="text-center lg:text-left mb-10 print:mb-6">
-            <div className="w-32 h-32 mx-auto lg:mx-0 rounded-full bg-gradient-to-br from-primary to-purple-600 mb-6 border-4 border-card shadow-md flex items-center justify-center print:w-24 print:h-24 print:mb-4">
-                <span className="text-white text-3xl font-bold">PG</span>
-            </div>
+            <img
+              src="/pfp.avif"
+              alt="Paul-Elouan Guyard-Lecerf"
+              className="w-32 h-32 mx-auto lg:mx-0 rounded-full bg-gradient-to-br from-primary to-purple-600 mb-6 border-4 border-card shadow-md flex items-center justify-center print:w-24 print:h-24 print:mb-4"
+            />
             <h1 className="text-3xl font-extrabold text-foreground leading-tight mb-2 print:text-2xl">
               Paul-Elouan <br/>
               <span className="text-primary">Guyard-Lecerf</span>
