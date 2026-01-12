@@ -79,7 +79,7 @@ export default function Portfolio() {
             {t.hero.badge}
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-            Full Stack <br />
+            Paul-Elouan Guyard-Lecerf <br />
             <span className="text-primary">{t.hero.role}</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-lg">

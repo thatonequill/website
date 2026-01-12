@@ -11,7 +11,7 @@ export const translations = {
     },
     hero: {
       badge: "Open to Work",
-      role: "Student Developer",
+      role: "Student BUT 3 Computer Science",
       description: "Building scalable systems, optimizing algorithms, and crafting intuitive user interfaces. Passionate about clean code.",
     },
     skills: {
@@ -103,7 +103,7 @@ export const translations = {
     },
     hero: {
       badge: "En recherche de stage",
-      role: "Étudiant Développeur",
+      role: "Étudiant BUT 3 Informatique",
       description: "Conception de systèmes évolutifs, optimisation d'algorithmes et création d'interfaces intuitives. Passionné par le code propre.",
     },
     skills: {
