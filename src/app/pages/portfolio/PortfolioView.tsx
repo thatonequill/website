@@ -19,6 +19,7 @@ import InfoCard from "@/components/portfolio/InfoCard";
 import ProjectCard from "@/components/portfolio/ProjectCard";
 import CVSection from "@/components/portfolio/CVSection";
 import HomeButton from "@/components/homeButton";
+import ProjectCarousel from "@/components/portfolio/ProjectCarousel";
 
 export default function Portfolio() {
   // State for Theme
@@ -102,7 +103,7 @@ export default function Portfolio() {
         {/* Added flex flex-col and gap-6 here to manage vertical stacking and spacing */}
         <div className="flex-1 w-full max-w-md flex flex-col gap-6 transform hover:scale-[1.02] transition-transform duration-500">
           <img
-            src="/pfp.avif"
+            src="/images/pfp.avif"
             alt="Paul-Elouan Guyard-Lecerf"
             className="w-full h-auto rounded-xl shadow-lg object-cover"
           />
@@ -168,11 +169,8 @@ export default function Portfolio() {
       {/* --- Projects Section --- */}
       <section id="projects" className="py-20 max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-12">{lang === 'en' ? "Projects & Experience" : "Projets & Expériences"}</h2>
-        <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-8">
-          {/* project maps */}
-          {currentProjects?.map(project => (
-            <ProjectCard key={project.id} project={project} lang={lang} />
-          ))}
+        <div className="mt-8">
+           <ProjectCarousel projects={currentProjects} lang={lang} />
         </div>
       </section>
 
