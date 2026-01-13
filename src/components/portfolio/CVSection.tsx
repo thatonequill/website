@@ -72,7 +72,7 @@ export default function CVSection({ lang }: CVSectionProps) {
         <div className="col-start-1 row-start-1 z-0 transition-opacity duration-700 ease-in-out">
            {/* We add a little opacity fade to make it look nicer when revealed */}
            <div className={`${showAdvanced ? 'opacity-100' : 'opacity-40'} transition-opacity duration-700`}>
-             <AdvancedResume lang={lang} />
+             {/* <AdvancedResume lang={lang} />  */}
            </div>
         </div>
 
