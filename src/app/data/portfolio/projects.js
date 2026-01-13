@@ -10,11 +10,10 @@ export const projects = [
 
 const projectsFr = [
 	{
-		id: "whatsapp-crm-synergie", // Unique ID
+		id: "whatsapp-crm-synergie",
 		title: "Optimisation de la communication intérimaire",
 		context: "Stage - Synergie", 
 		date: "Juin 2025 - Août 2025 (12 semaines)",
-		// Keywords mixing technical skills with Parcours C specific skills
 		keywords: ["Réaliser", "Optimiser", "Conduire", "React Admin", "API Rest"],
 		star: {
 			situation: "La branche Care (Secteur Médical) de Synergie peinait à contacter rapidement les intérimaires pour des missions urgentes. Dans le secteur médical, ces délais de communication retardaient l'envoi de personnel critique sur le terrain, perdant des contrats aux compétiteur.",
@@ -58,8 +57,6 @@ const projectsFr = [
 		title: "aev.LastByte - Action-RPG Hybride",
 		context: "Projet Personnel - Godot Engine (En cours)", 
 		date: "2024 - Présent",
-		// "Conduire" is the main focus here: You are the Game Director defining the rules.
-		// "Gérer" applies to the modular structure (Shards/Nodes).
 		keywords: ["Conduire", "Gérer", "Game Design", "Godot", "UX Design", "World Building"],
 		star: {
 			situation: "Développement d'un RPG complexe combinant narration, combat au tour par tour et phases de parkour dans un univers 'Futuristic/Glitch' (Glasspace & Meatspace).",
@@ -79,9 +76,8 @@ const projectsFr = [
 	{
 		id: "marketplace-bretagne-php",
 		title: "Plateforme d'Offres Touristiques & Locales",
-		context: "Projet Universitaire (Équipe de 6 personnes)", // Replace X with team size
+		context: "Projet Universitaire (Équipe de 6 personnes)", 
 		date: "2024 - 2025",
-		// "Collaborer" is the star here due to Scrum/GitHub
 		keywords: ["Collaborer", "Gérer", "Méthode Scrum", "PHP/PostgreSQL", "Full Stack"],
 		star: {
 			situation: "Dans le cadre d'une SAE de 2ème année, nous devions développer une plateforme web dynamique permettant la mise en relation entre des professionnels bretons et des visiteurs.",
@@ -103,7 +99,6 @@ const projectsFr = [
         title: "Portfolio Personnel & Theorycrafter",
         context: "Projet Personnel (Autonomie)",
         date: "Fin 2025 - Présent",
-        // Mots-clés valorisant la stack technique et les compétences BUT
         keywords: ["Réaliser", "Optimiser", "React", "Prisma", "Full Stack", "Algorithmique"],
         star: {
             situation: "Dans le cadre de ma 3ème année de BUT, je devais réaliser un portfolio professionnel. Pour dépasser le simple site vitrine, j'ai choisi d'intégrer un défi technique personnel : un outil de 'Theorycrafting' pour un jeu vidéo, permettant de noter la qualité d'un équipement.",
@@ -125,11 +120,10 @@ const projectsFr = [
 
 const projectsEn = [
     {
-        id: "whatsapp-crm-synergie", // Unique ID
+        id: "whatsapp-crm-synergie", 
         title: "Temp Staffing Communication Optimization",
         context: "Internship - Synergie", 
         date: "June 2025 - August 2025 (12 weeks)",
-        // Keywords mixing technical skills with Parcours C specific skills
         keywords: ["Build", "Optimize", "Lead", "React Admin", "API Rest"],
         star: {
             situation: "Synergie's Care branch (Medical Sector) struggled to contact temporary workers quickly for urgent missions. In the medical field, these communication delays slowed down the deployment of critical personnel, leading to lost contracts against competitors.",
