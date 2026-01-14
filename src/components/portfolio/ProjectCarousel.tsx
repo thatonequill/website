@@ -16,15 +16,15 @@ export default function ProjectCarousel({ projects, lang }: ProjectCarouselProps
 
   const currentProject = projects[currentIndex];
 
+  // Handles for switching
   const handleNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     
-    // Wait for exit animation, then switch
     setTimeout(() => {
       setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
       setIsAnimating(false);
-    }, 200); // Matches CSS duration
+    }, 200);
   };
 
   const handlePrev = () => {
@@ -49,9 +49,8 @@ export default function ProjectCarousel({ projects, lang }: ProjectCarouselProps
             isAnimating ? 'opacity-0 scale-95 translate-y-4' : 'opacity-100 scale-100 translate-y-0'
           }`}
         >
-          {/* We render just ONE card for performance */}
           <ProjectCard 
-            key={currentProject.id} // Key forces React to remount/animate on change
+            key={currentProject.id}
             project={currentProject} 
             lang={lang} 
           />

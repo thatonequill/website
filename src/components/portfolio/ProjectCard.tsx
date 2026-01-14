@@ -22,18 +22,9 @@ const KeywordTag = ({ text }: { text: string }) => {
 const ProjectCard = ({ project, lang }: { project: any; lang: string }) => {
   return (
     <div className="h-full">
-      {/* Main Container Changes:
-         1. Removed 'p-6' (moved to content column).
-         2. Added 'overflow-hidden' to clip the image to the rounded corners.
-         3. Kept the border/shadow/hover effects on this wrapper.
-      */}
       <div className="flex flex-col h-full bg-card border border-border rounded-2xl shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300 group overflow-hidden">
-        
-        {/* GRID LAYOUT: Stacks on mobile, 2 columns on medium+ screens */}
         <div className="grid grid-cols-1 md:grid-cols-2 h-full">
-
-          {/* Added 'p-6' here to give the text breathing room */}
-          <div className="flex flex-col p-6 h-full">
+          <div className="flex flex-col p-6 h-full">            
             
             {/* --- HEADER --- */}
             <div className="mb-6">
@@ -51,9 +42,8 @@ const ProjectCard = ({ project, lang }: { project: any; lang: string }) => {
 
             {/* --- TAGS --- */}
             <div className="mb-6">
-              <div className="flex flex-wrap gap-2"> {/* Added gap-2 for spacing */}
+              <div className="flex flex-wrap gap-2">
                 {project.keywords.map((tag: string, index: number) => (
-                  // Assuming KeywordTag is a separate component you have
                   <KeywordTag key={index} text={tag} />
                 ))}
               </div>
@@ -93,7 +83,6 @@ const ProjectCard = ({ project, lang }: { project: any; lang: string }) => {
                   ))}
                 </ul>
               </div>
-
             </div>
 
             {/* Result Box */}

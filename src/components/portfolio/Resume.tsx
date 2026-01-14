@@ -88,7 +88,7 @@ const resumeData = {
         company: "Blanche de Castille",
         location: "Nantes, France",
         period: "Obtenu en Juillet 2023",
-        description: "Spécialités : Mathématiques et NSI (Numérique et Sciences Informatiques). Mention Bien."
+        description: "Spécialités : Mathématiques et NSI (Numérique et Sciences Informatiques)."
       }
     ],
     skillLevels: {
@@ -162,7 +162,7 @@ const resumeData = {
         company: "Blanche de Castille",
         location: "Nantes, France",
         period: "Obtained July 2023",
-        description: "Specialties: Mathematics and CS (Computer Science). With Honors."
+        description: "Specialties: Mathematics and CS (Computer Science)."
       }
     ],
     skillLevels: {

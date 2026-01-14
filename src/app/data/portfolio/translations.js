@@ -40,7 +40,6 @@ export const translations = {
         conduire: { 
           title: "Lead", 
           desc: "Identify needs and steer projects",
-          // ADDED:
           examples: [
             "Co-constructed a solution with 2 pilot agencies (Synergie).",
             "Wrote a complete Game Design Document to define MVP scope."

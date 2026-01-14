@@ -2,17 +2,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { 
-  Github, Linkedin, Mail, Moon, Sun, Terminal, 
-  Code2, Cpu, Database
-} from "lucide-react";
+import { Github, Linkedin, Mail, Moon, Sun, Terminal, Code2, Cpu, Database } from "lucide-react";
 import Image from "next/image";
 import pfp from "/pfp.avif";
 
-// Import new data files
+// Data Import, for translations
 import { projectsData } from '../../data/portfolio/projects.js';
 import { translations } from '../../data/portfolio/translations.js';
 
+// Components Import
 import LanguageSwitch from "@/components/portfolio/LanguageSwitch";
 import CodeBlock from "@/components/portfolio/CodeBlock";
 import InfoCard from "@/components/portfolio/InfoCard";
@@ -22,16 +20,12 @@ import HomeButton from "@/components/homeButton";
 import ProjectCarousel from "@/components/portfolio/ProjectCarousel";
 
 export default function Portfolio() {
-  // State for Theme
   const [darkMode, setDarkMode] = useState(false);
-  // State for Language
   const [lang, setLang] = useState<'en' | 'fr'>('en');
 
-  // Helper to get current text
   const t = translations[lang];
   const currentProjects = projectsData[lang];
 
-  // Sets Theme
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -99,8 +93,7 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Right Column: Code Snippet & Image */}
-        {/* Added flex flex-col and gap-6 here to manage vertical stacking and spacing */}
+        {/* Code Snippet & Image */}
         <div className="flex-1 w-full max-w-md flex flex-col gap-6 transform hover:scale-[1.02] transition-transform duration-500">
           <img
             src="/images/pfp.avif"
@@ -176,9 +169,7 @@ export default function Portfolio() {
 
       {/* --- Resume Section --- */}
       <section id="resume">
-        
         <CVSection lang={lang} />
-
       </section>
       
       {/* --- Footer --- */}

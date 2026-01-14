@@ -26,7 +26,7 @@ const projectsFr = [
 			result: "Déploiement d'une solution permettant une communication instantanée. Accélération significative du processus de placement des intérimaires sur les missions urgentes."
 		},
         imageUrl: [
-            "/images/whatsapp-crm-synergie.png"
+            "/images/whatsapp-crm-synergie.avif"
         ],
 		links: [
 		]
@@ -49,7 +49,7 @@ const projectsFr = [
 			result: "Jeu fonctionnel et fluide, disposant d'une IA challengeante. Le projet démontre une maîtrise de la gestion de la mémoire en C et une capacité à mener un projet technique de A à Z."
 		},
         imageUrl: [
-            "/images/super-tictactoe-c.png"
+            "/images/super-tictactoe-c.avif"
         ],
 		links: [
 			{ label: "Dépôt GitHub du projet", url: "https://github.com/thatonequill/SuperTicTacToe" },
@@ -73,7 +73,7 @@ const projectsFr = [
 			result: "Documentation technique et créative finalisée servant de feuille de route claire. Prototype en cours de développement sous Godot avec les mécaniques de base (Exploration/Combat)."
 		},
         imageUrl: [
-            "/images/aev-lastbyte-godot.png"
+            "/images/aev-lastbyte-godot.avif"
         ],
 		links: [
 			{ label: "Dépôt GitHub du projet", url: "https://github.com/thatonequill/aev-LastByte" }
@@ -97,7 +97,7 @@ const projectsFr = [
 			result: "Plateforme fonctionnelle permettant aux professionnels de gérer leur activité en autonomie et aux visiteurs de noter les expériences. Projet livré en respectant les cérémonies agiles."
 		},
         imageUrl: [
-            "/images/marketplace-bretagne-php.png"
+            "/images/marketplace-bretagne-php.avif"
         ],
 		links: [
 			{ label: "Dépôt GitHub du projet", url: "https://github.com/ArianeGL/c1.2-srfc" },
@@ -121,7 +121,7 @@ const projectsFr = [
             result: "Livraison d'une plateforme unique qui valide les attendus académiques tout en prouvant ma capacité à gérer des logiques métiers complexes (calculs, BDD) au sein d'un projet personnel."
         },
         imageUrl: [
-            "/images/website-react-prisma.png"
+            "/images/website-react-prisma.avif"
         ],
         links: [
             { label: "Dépôt GitHub", url: "https://github.com/thatonequill/website" },
@@ -148,7 +148,7 @@ const projectsEn = [
             result: "Deployed a solution enabling instant communication. Significantly accelerated the placement process for temporary workers on urgent missions."
         },
         imageUrl: [
-            "/images/whatsapp-crm-synergie.png"
+            "/images/whatsapp-crm-synergie.avif"
         ],
         links: [
         ]
@@ -171,7 +171,7 @@ const projectsEn = [
             result: "Functional and fluid game featuring a challenging AI. The project demonstrates mastery of memory management in C and the ability to lead a technical project from A to Z."
         },
         imageUrl: [
-            "/images/super-tictactoe-c.png"
+            "/images/super-tictactoe-c.avif"
         ],
         links: [
             { label: "Project GitHub Repository", url: "https://github.com/thatonequill/SuperTicTacToe" },
@@ -195,7 +195,7 @@ const projectsEn = [
             result: "Finalized technical and creative documentation serving as a clear roadmap. Prototype currently under development in Godot with basic mechanics (Exploration/Combat)."
         },
         imageUrl: [
-            "/images/aev-lastbyte-godot.png"
+            "/images/aev-lastbyte-godot.avif"
         ],
         links: [
             { label: "Project GitHub Repository", url: "https://github.com/thatonequill/aev-LastByte" }
@@ -219,7 +219,7 @@ const projectsEn = [
             result: "Functional platform allowing professionals to manage their activity independently and visitors to rate experiences. Project delivered while respecting agile ceremonies."
         },
         imageUrl: [
-            "/images/marketplace-bretagne-php.png"
+            "/images/marketplace-bretagne-php.avif"
         ],
         links: [
             { label: "Project GitHub Repository", url: "https://github.com/ArianeGL/c1.2-srfc" },
@@ -243,7 +243,7 @@ const projectsEn = [
             result: "A unified platform that fulfills the academic portfolio requirement while demonstrating advanced full-stack capabilities. The builder tool successfully tracks progress and provides accurate algorithmic rankings."
         },
         imageUrl: [
-            "/images/website-react-prisma.png"
+            "/images/website-react-prisma.avif"
         ],
         links: [
             { label: "GitHub Repository", url: "https://github.com/thatonequill/website" },
