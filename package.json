@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:generate": "prisma generate --schema=./prisma/schema/schema.prisma",
+    "db:push": "prisma db push --schema=./prisma/schema/schema.prisma"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
