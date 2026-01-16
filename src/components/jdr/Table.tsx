@@ -1,0 +1,48 @@
+'use client'
+import Card from './Card'
+
+export default function Table({ draws, cardLibrary, currentUser, activePlayerId }: any) {
+  
+  // Helper to find Card Data by ID
+  const getCardDef = (id: string) => cardLibrary.find((c: any) => c.id === id)
+
+  return (
+    <div className="flex flex-col gap-12 pb-20">
+      {draws.length === 0 && (
+        <div className="text-center text-slate-600 mt-20 text-xl font-light">
+          The table is empty. Waiting for the first draw...
+        </div>
+      )}
+
+      {draws.map((draw: any) => {
+        const isOwner = currentUser.id === draw.playerId
+        // Check if user allowed to interact (Must be owner AND active player)
+        const canInteract = isOwner && (currentUser.id === activePlayerId)
+
+        return (
+          <div key={draw.id} className="relative group">
+            <div className="mb-2 text-sm text-slate-400 uppercase tracking-widest pl-2 border-l-2 border-purple-500">
+              Draw by {draw.player?.pseudo || 'Unknown'}
+            </div>
+            
+            <div className="flex flex-wrap gap-6 items-start">
+              {(draw.cardsSnapshot as any[]).map((snap, idx) => {
+                const def = getCardDef(snap.cardId)
+                if (!def) return null
+
+                return (
+                  <Card 
+                    key={`${draw.id}-${idx}`}
+                    data={{ ...snap, drawId: draw.id, index: idx }} 
+                    def={def}
+                    canFlip={canInteract} 
+                  />
+                )
+              })}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}

@@ -1,5 +1,7 @@
 // File: prisma/jdr.prisma
 
+// --- JDR / TAROT MODULE ---
+
 model Card {
     id        String  @id @default(cuid())
     name      String

@@ -2,7 +2,7 @@
 
 # 1. Start Docker Containers (Detached)
 echo "🐳 Starting Website and Database..."
-cd ./website
+# cd ..
 docker-compose up -d
 
 # 2. Wait briefly to ensure port 5433 is open

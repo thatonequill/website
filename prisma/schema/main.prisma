@@ -1,0 +1,14 @@
+// prisma/schema/main.prisma
+// prisma/schema/base.prisma
+
+generator client {
+    provider = "prisma-client-js"
+    // previewFeatures = ["multiSchema"] // Optional in v7, but harmless
+}
+
+datasource db {
+    provider = "postgresql"
+
+    // Keep your schemas list
+    schemas = ["jdr", "charTracker"]
+}
