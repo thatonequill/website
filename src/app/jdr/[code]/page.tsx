@@ -24,7 +24,12 @@ export default async function Page({
     include: {
       players: true,
       draws: {
-        orderBy: { timestamp: 'desc' } // Newest draws first
+        orderBy: { timestamp: 'desc' },
+        include: {
+          player: {
+            select: { pseudo: true }
+          }
+        }
       }
     }
   })
