@@ -9,7 +9,7 @@ services:
       - "3000:3000"
     environment:
       # Internal Docker Network: connects to 'db' on port 5432
-      - DATABASE_URL=postgresql://postgres:password@db:5432/website?schema=public
+      - DATABASE_URL=${DATABASE_URL}
       - WATCHPACK_POLLING=true
     volumes:
       - .:/app

@@ -9,7 +9,8 @@ import {
   Heart,
   Code,
   Terminal,
-  Download
+  Download,
+  Globe
 } from 'lucide-react';
 
 import { useRef } from 'react';
@@ -294,6 +295,10 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Phone size={16} className="text-primary min-w-[16px]" />
                 <span>+33 6 64 96 77 67</span>
+              </div>
+              <div className='flex items-center gap-3 text-muted-foreground'>
+                <Globe size={16} className="text-primary min-w-[16px]"/>
+                <span>qtqwill.dev</span>
               </div>
             </div>
 
