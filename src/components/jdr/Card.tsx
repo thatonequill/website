@@ -21,7 +21,7 @@ export default function Card({ data, def, canFlip }: any) {
         {/* BACK OF CARD */}
         <div className={styles.back}>
           {/* Decorative Pattern */}
-          <div className="w-20 h-32 border-2 border-slate-600 rounded opacity-20"></div>
+          <img src="/images/jdr/CardBackDark.avif" alt="Card Back" className="w-full h-full object-cover" />
           
           {/* Reveal Button Overlay */}
           {canFlip && !data.isRevealed && (
