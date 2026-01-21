@@ -90,7 +90,7 @@ export async function performDraw(roomId: string, playerId: string, cardCount: n
   const snapshot: CardSnapshot[] = selected.map((card, index) => ({
     cardId: card.id,
     position: index,
-    isReversed: Math.random() < 0.5, 
+    isReversed: Math.random() < 0.38, 
     isRevealed: false 
   }))
 
