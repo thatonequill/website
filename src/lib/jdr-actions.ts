@@ -26,7 +26,7 @@ export async function createRoom(formData: FormData) {
     const hoursOld = (Date.now() - existing.updatedAt.getTime()) / 1000 / 60 / 60
     
     // Rule: Cannot overwrite active rooms (<24h)
-    if (hoursOld < 24) {
+    if (hoursOld < 6) {
       // In a real app, you'd return an error state. For now, we redirect to an error page or similar.
       // For this implementation, let's just fail silently or handle it in UI.
       throw new Error("Room is occupied and active.")
