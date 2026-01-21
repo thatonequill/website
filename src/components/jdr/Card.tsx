@@ -13,6 +13,13 @@ export default function Card({ data, def, canFlip }: any) {
       setIsFlipping(false)
     }
   }
+  
+  const cardClasses = (data.isReversed ? (
+    "w-full h-full object-cover rotate-180"
+    ) : (
+      "w-full h-full object-cover"
+    )
+  )
 
   return (
     <div className={styles.scene}>
@@ -36,16 +43,36 @@ export default function Card({ data, def, canFlip }: any) {
         </div>
 
         {/* FACE OF CARD */}
-        <div className={styles.face}>
-            {def.imagePath ? (
-              data.isReversed ? (
-                <img src={def.imagePath} alt={def.name} className="w-full h-full object-cover rotate-180" />
-              ) : (
+        {/* Added 'relative group' to enable the overlay positioning and hover trigger */}
+        <div className={`${styles.face} relative group`}>
+          
+          {/* --- STANDARD CONTENT --- */}
+          <div className='h-7 flex items-center justify-center'>
+            <p className="text-sm truncate px-2">{def.name}</p>
+          </div>
+
+          {/* Card Image */}
+          <div className="flex-1 relative w-full overflow-hidden">
+             {def.imagePath ? (
                 <img src={def.imagePath} alt={def.name} className="w-full h-full object-cover" />
-              )
-            ) : (
+             ) : (
                 <img src={"https://qtqwill.dev/images/jdr/MTA/Arcana_0_Fool.avif"} alt={"The Fool"} className="w-full h-full object-cover" />
-            )}
+             )}
+          </div>
+
+          {/* Card Short Desc */}
+          <div className='text-xs h-10 flex justify-center items-center px-2 text-center leading-tight bg-slate-100 text-slate-800'>
+            <p className="line-clamp-2">{def.shortDesc}</p>
+          </div>
+
+
+          {/* --- HOVER OVERLAY (Full Desc) --- */}
+          <div className="absolute inset-0 mt-7 h-63 bg-slate-900/95 text-slate-200 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center z-10 rounded-[inherit]">
+            <p className="text-xs leading-relaxed overflow-y-auto max-h-full scrollbar-thin scrollbar-thumb-slate-600">
+              {def.fullDesc || "No details available."}
+            </p>
+          </div>
+
         </div>
       </div>
     </div>
