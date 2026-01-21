@@ -3,3 +3,4 @@ DATABASE_URL="postgresql://postgres.tnnvmlivrwlwpgjuhtju:[YOUR-PASSWORD]@aws-1-e
 
 # Direct connection to the database. Used for migrations
 DIRECT_URL="postgresql://postgres.tnnvmlivrwlwpgjuhtju:[YOUR-PASSWORD]@aws-1-eu-central-2.pooler.supabase.com:5432/postgres"
+SHADOW_DATABASE_URL="postgresql://postgres.tnnvmlivrwlwpgjuhtju:[YOUR-PASSWORD]@aws-1-eu-central-2.pooler.supabase.com:5432/shadow_db"

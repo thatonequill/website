@@ -10,6 +10,7 @@ services:
     environment:
       # Internal Docker Network: connects to 'db' on port 5432
       - DATABASE_URL=${DATABASE_URL}
+      - DIRECT_URL=${DIRECT_URL}
       - WATCHPACK_POLLING=true
     volumes:
       - .:/app
