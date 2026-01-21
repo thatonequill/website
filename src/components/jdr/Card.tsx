@@ -37,16 +37,15 @@ export default function Card({ data, def, canFlip }: any) {
 
         {/* FACE OF CARD */}
         <div className={styles.face}>
-           {/* If you have images, use def.imagePath. For now, text fallback: */}
-           <div className="w-full h-full p-2 flex flex-col items-center justify-between bg-slate-100 text-slate-900 overflow-hidden">
-              <span className="text-xs font-bold uppercase">{def.name}</span>
-              {def.imagePath ? (
-                 <img src={def.imagePath} alt={def.name} className="w-full h-32 object-cover rounded" />
+            {def.imagePath ? (
+              data.isReversed ? (
+                <img src={def.imagePath} alt={def.name} className="w-full h-full object-cover rotate-180" />
               ) : (
-                 <div className="text-4xl">🔮</div>
-              )}
-              <span className="text-[10px] text-center leading-tight">{def.shortDesc || "Mystery..."}</span>
-           </div>
+                <img src={def.imagePath} alt={def.name} className="w-full h-full object-cover" />
+              )
+            ) : (
+                <img src={"https://qtqwill.dev/images/jdr/MTA/Arcana_0_Fool.avif"} alt={"The Fool"} className="w-full h-full object-cover" />
+            )}
         </div>
       </div>
     </div>
