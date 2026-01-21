@@ -2,11 +2,12 @@
   "name": "website",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+   "scripts": {
     "dev": "next dev",
-    "build": "npx prisma generate && next build",
+    "build": "next build", 
     "start": "next start",
     "lint": "eslint",
+    "postinstall": "prisma generate --schema=./prisma/schema/schema.prisma", 
     "db:generate": "prisma generate --schema=./prisma/schema/schema.prisma",
     "db:push": "prisma db push --schema=./prisma/schema/schema.prisma"
   },
