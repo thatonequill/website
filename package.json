@@ -7,9 +7,9 @@
     "build": "next build", 
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate --schema=/vercel/prisma/schema/schema.prisma", 
-    "db:generate": "prisma generate --schema=/vercel/prisma/schema/schema.prisma",
-    "db:push": "prisma db push --schema=/vercel/prisma/schema/schema.prisma"
+    "postinstall": "prisma generate --schema=./prisma/schema/schema.prisma", 
+    "db:generate": "prisma generate --schema=./prisma/schema/schema.prisma",
+    "db:push": "prisma db push --schema=./prisma/schema/schema.prisma"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",
