@@ -48,7 +48,6 @@ export default function Card({ data, def, canFlip }: any) {
               <span className="text-[10px] text-center leading-tight">{def.shortDesc || "Mystery..."}</span>
            </div>
         </div>
-
       </div>
     </div>
   )
