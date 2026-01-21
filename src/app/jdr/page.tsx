@@ -1,3 +1,4 @@
+import { SubmitButton } from '@/components/submitButton'
 import { createRoom, joinRoom } from '@/lib/jdr-actions'
 
 export default function JdrLandingPage() {
@@ -17,9 +18,12 @@ export default function JdrLandingPage() {
               name="pseudo" type="text" placeholder="Your Name" required 
               className="bg-slate-950 border border-slate-800 rounded p-3 text-white"
             />
-            <button type="submit" className="bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded">
+            {/* <button type="submit" className="bg-purple-600 hover:bg-purple-500 text-white font-bold py-3 rounded">
               Create Room
-            </button>
+            </button> */}
+            <SubmitButton>
+              Create Room
+            </SubmitButton>
           </form>
         </div>
 
@@ -35,9 +39,12 @@ export default function JdrLandingPage() {
               name="pseudo" type="text" placeholder="Your Name" required 
               className="bg-slate-950 border border-slate-800 rounded p-3 text-white"
             />
-            <button type="submit" className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded">
+            {/* <button type="submit" className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded">
               Join Room
-            </button>
+            </button> */}
+            <SubmitButton color='emerald'>
+              Join Room
+            </SubmitButton>
           </form>
         </div>
 

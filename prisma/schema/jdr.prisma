@@ -1,11 +1,13 @@
 // File: prisma/jdr.prisma
 
 model Card {
-    id        String  @id @default(cuid())
-    name      String
-    imagePath String
-    shortDesc String?
-    fullDesc  String?
+    id          String  @id @default(cuid())
+    name        String
+    imagePath   String
+    shortDesc   String?
+    shortDescFr String?
+    fullDesc    String?
+    fullDescFr  String?
 
     @@schema("jdr")
 }

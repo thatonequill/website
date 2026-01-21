@@ -1,5 +1,4 @@
-branch = "$(git rev-parse --abbrev-ref HEAD)"
 git switch main
-git merge $branch
+git merge toPublish
 git push
-git switch $branch
+git switch Dev

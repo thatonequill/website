@@ -13,6 +13,13 @@ export default function Card({ data, def, canFlip }: any) {
       setIsFlipping(false)
     }
   }
+  
+  const cardClasses = (data.isReversed ? (
+    "w-full h-full object-cover rotate-180"
+    ) : (
+      "w-full h-full object-cover"
+    )
+  )
 
   return (
     <div className={styles.scene}>
@@ -21,7 +28,7 @@ export default function Card({ data, def, canFlip }: any) {
         {/* BACK OF CARD */}
         <div className={styles.back}>
           {/* Decorative Pattern */}
-          <div className="w-20 h-32 border-2 border-slate-600 rounded opacity-20"></div>
+          <img src="/images/jdr/CardBackDark.avif" alt="Card Back" className="w-full h-full object-cover" />
           
           {/* Reveal Button Overlay */}
           {canFlip && !data.isRevealed && (
@@ -36,19 +43,37 @@ export default function Card({ data, def, canFlip }: any) {
         </div>
 
         {/* FACE OF CARD */}
-        <div className={styles.face}>
-           {/* If you have images, use def.imagePath. For now, text fallback: */}
-           <div className="w-full h-full p-2 flex flex-col items-center justify-between bg-slate-100 text-slate-900 overflow-hidden">
-              <span className="text-xs font-bold uppercase">{def.name}</span>
-              {def.imagePath ? (
-                 <img src={def.imagePath} alt={def.name} className="w-full h-32 object-cover rounded" />
-              ) : (
-                 <div className="text-4xl">🔮</div>
-              )}
-              <span className="text-[10px] text-center leading-tight">{def.shortDesc || "Mystery..."}</span>
-           </div>
-        </div>
+        {/* Added 'relative group' to enable the overlay positioning and hover trigger */}
+        <div className={`${styles.face} relative group`}>
+          
+          {/* --- STANDARD CONTENT --- */}
+          <div className='h-7 flex items-center justify-center'>
+            <p className="text-sm truncate px-2">{def.name}</p>
+          </div>
 
+          {/* Card Image */}
+          <div className="flex-1 relative w-full overflow-hidden">
+             {def.imagePath ? (
+                <img src={def.imagePath} alt={def.name} className="w-full h-full object-cover" />
+             ) : (
+                <img src={"https://qtqwill.dev/images/jdr/MTA/Arcana_0_Fool.avif"} alt={"The Fool"} className="w-full h-full object-cover" />
+             )}
+          </div>
+
+          {/* Card Short Desc */}
+          <div className='text-xs h-10 flex justify-center items-center px-2 text-center leading-tight bg-slate-100 text-slate-800'>
+            <p className="line-clamp-2">{def.shortDesc}</p>
+          </div>
+
+
+          {/* --- HOVER OVERLAY (Full Desc) --- */}
+          <div className="absolute inset-0 mt-7 h-63 bg-slate-900/95 text-slate-200 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center z-10 rounded-[inherit]">
+            <p className="text-xs leading-relaxed overflow-y-auto max-h-full scrollbar-thin scrollbar-thumb-slate-600">
+              {def.fullDesc || "No details available."}
+            </p>
+          </div>
+
+        </div>
       </div>
     </div>
   )
