@@ -54,9 +54,9 @@ export default function Card({ data, def, canFlip }: any) {
           {/* Card Image */}
           <div className="flex-1 relative w-full overflow-hidden">
              {def.imagePath ? (
-                <img src={def.imagePath} alt={def.name} className="w-full h-full object-cover" />
+                <img src={def.imagePath} alt={def.name} className={cardClasses} />
              ) : (
-                <img src={"https://qtqwill.dev/images/jdr/MTA/Arcana_0_Fool.avif"} alt={"The Fool"} className="w-full h-full object-cover" />
+                <img src={"https://qtqwill.dev/images/jdr/MTA/Arcana_0_Fool.avif"} alt={"The Fool"} className={cardClasses} />
              )}
           </div>
 
@@ -65,6 +65,9 @@ export default function Card({ data, def, canFlip }: any) {
             <p className="line-clamp-2">{def.shortDesc}</p>
           </div>
 
+          {/* <pre>
+            {JSON.stringify(data, null, 2)}
+          </pre> */}
 
           {/* --- HOVER OVERLAY (Full Desc) --- */}
           <div className="absolute inset-0 mt-7 h-63 bg-slate-900/95 text-slate-200 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center z-10 rounded-[inherit]">
