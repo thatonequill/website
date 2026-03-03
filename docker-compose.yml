@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "4444:5432" # Maps your requested port 4444 to the DB. Connect your SQL viewer to localhost:4444!
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: local_dev_password
+      POSTGRES_DB: local_supabase
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3333:3333" # Next.js accessible at localhost:3333
+    volumes:
+      - .:/app
+      - /app/node_modules # Prevents your local machine's node_modules from conflicting with the container's
+      - /app/.next       # Keeps Next.js build cache inside the container
+    environment:
+      - DATABASE_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
+      
+      - DIRECT_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
+      
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

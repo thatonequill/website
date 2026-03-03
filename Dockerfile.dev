@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json* ./
+
+# Copy config files
+COPY prisma.config.ts tsconfig.json ./
+
+# Copy the prisma folder
+COPY prisma ./prisma
+
+# Install dependencies
+RUN npm install
+
+# The CMD runs your custom db:push script, then starts Next.js on port 3333
+CMD npm run db:push && npm run dev -- -p 3333

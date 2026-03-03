@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate --schema=./prisma/schema/main.prisma && next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate --schema=./prisma/schema/main.prisma",
-    "db:generate": "prisma generate --schema=./prisma/schema/main.prisma",
-    "db:push": "prisma db push --schema=./prisma/schema/main.prisma"
+    "postinstall": "prisma generate",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",
