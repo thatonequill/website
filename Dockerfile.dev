@@ -1,5 +1,7 @@
 FROM node:20-alpine
 
+RUN apk add --no-cache postgresql-client
+
 WORKDIR /app
 
 # Copy package files
@@ -11,8 +13,11 @@ COPY prisma.config.ts tsconfig.json ./
 # Copy the prisma folder
 COPY prisma ./prisma
 
+# Copy the files folder
+COPY files/ ./files/
+
 # Install dependencies
 RUN npm install
 
-# The CMD runs your custom db:push script, then starts Next.js on port 3333
-CMD npm run db:push && npm run dev -- -p 3333
+# The CMD runs your custom start script
+CMD ["./files/start.sh"]

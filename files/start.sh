@@ -1,23 +1,11 @@
-#!/bin/bash
+#!/bin/sh
+set -ex
 
-# 1. Start Docker Containers (Detached)
-echo "🐳 Starting Website and Database..."
-# cd ..
-docker-compose up -d
+echo "--- Running db:push ---"
+npm run db:push
 
-# 2. Wait briefly to ensure containers are up
-echo "⏳ Waiting for App to start..."
-sleep 3
+echo "--- Running db:seed ---"
+npm run db:seed
 
-# 3. Start Prisma Studio
-# We manually override the URL to point to localhost:5433 instead of 'db:5432'
-echo "🚀 Opening Prisma Studio..."
-echo "👉 Website: http://localhost:3001"
-echo "👉 Studio:  http://localhost:5555"
-echo ""
-echo "(Press Ctrl+C to stop Studio)"
-
-npx prisma studio \
-  --port 5555 \
-  --browser none \
-  --url "postgresql://postgres:postgres@127.0.0.1:54322/postgres?schema=jdr"
+echo "--- Starting dev server ---"
+npm run dev -- -p 3333
