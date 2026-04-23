@@ -16,6 +16,9 @@ export default function HomePage() {
         <Link href="/pages/portfolio" className="text-xl text-blue-600 hover:underline dark:text-blue-400">
           Go to my Portfolio
         </Link>
+        <Link href="/jdr" className="text-xl text-blue-600 hover:underline dark:text-blue-400">
+          Go to my Tarot app
+        </Link>
         <p className="text-xl text-teal-600">
           Other links will be added soon.
         </p>

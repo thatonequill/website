@@ -35,7 +35,7 @@ export default function Card({ data, def, canFlip }: any) {
             <button 
               onClick={handleClick}
               disabled={isFlipping}
-              className="absolute inset-0 bg-black/40 hover:bg-black/20 flex items-center justify-center text-white font-bold tracking-widest transition-colors backdrop-blur-[2px] cursor-pointer z-10 rounded-xl"
+              className="absolute inset-0 bg-background/40 hover:bg-background/20 flex items-center justify-center text-foreground font-bold tracking-widest transition-colors backdrop-blur-[2px] cursor-pointer z-10 rounded-xl"
             >
               CLICK<br/>TO<br/>FLIP
             </button>
@@ -61,7 +61,7 @@ export default function Card({ data, def, canFlip }: any) {
           </div>
 
           {/* Card Short Desc */}
-          <div className='text-xs h-10 flex justify-center items-center px-2 text-center leading-tight bg-slate-100 text-slate-800'>
+          <div className='text-xs h-10 flex justify-center items-center px-2 text-center leading-tight bg-muted text-muted-foreground'>
             <p className="line-clamp-2">{def.shortDesc}</p>
           </div>
 
@@ -70,8 +70,8 @@ export default function Card({ data, def, canFlip }: any) {
           </pre> */}
 
           {/* --- HOVER OVERLAY (Full Desc) --- */}
-          <div className="absolute inset-0 mt-7 h-63 bg-slate-900/95 text-slate-200 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center z-10 rounded-[inherit]">
-            <p className="text-xs leading-relaxed overflow-y-auto max-h-full scrollbar-thin scrollbar-thumb-slate-600">
+          <div className="absolute inset-0 mt-7 h-63 bg-card/95 text-card-foreground p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center z-10 rounded-[inherit]">
+            <p className="text-xs leading-relaxed overflow-y-auto max-h-full scrollbar-thin scrollbar-thumb-muted-foreground">
               {def.fullDesc || "No details available."}
             </p>
           </div>

@@ -10,7 +10,7 @@ export default function Table({ draws, cardLibrary, currentUser, activePlayerId 
   return (
     <div className="flex flex-col gap-35 pb-20">
       {draws.length === 0 && (
-        <div className="text-center text-slate-600 mt-20 text-xl font-light">
+        <div className="text-center text-muted-foreground mt-20 text-xl font-light">
           The table is empty. Waiting for the first draw...
         </div>
       )}
@@ -21,7 +21,7 @@ export default function Table({ draws, cardLibrary, currentUser, activePlayerId 
 
         return (
           <div key={draw.id} className="relative group">
-            <div className="mb-2 text-sm text-slate-400 uppercase tracking-widest pl-2 border-l-2 border-purple-500">
+            <div className="mb-2 text-sm text-muted-foreground uppercase tracking-widest pl-2 border-l-2 border-primary">
               Draw by {draw.player.pseudo || 'Unknown'}
             </div>
             
