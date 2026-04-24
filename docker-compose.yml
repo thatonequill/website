@@ -33,39 +33,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-
-  planka_db:
-    image: postgres:15-alpine
-    environment:
-      POSTGRES_USER: planka
-      POSTGRES_PASSWORD: planka_password
-      POSTGRES_DB: planka
-    volumes:
-      - planka_db_data:/var/lib/postgresql/data
-    # healthcheck:
-    #   test: ["CMD-SHELL", "pg_isready -U planka -d planka"]
-    #   interval: 5s
-    #   timeout: 5s
-    #   retries: 5
-
-  planka:
-    image: ghcr.io/plankanban/planka:latest
-    command: >
-      sh -c "python3 /app/scripts/wait_for_db.py &&
-             knex migrate:latest &&
-             node /app/dist/main.js"
-    ports:
-      - "3000:3000" # Planka accessible at localhost:3000
-    volumes:
-      - planka_user_data:/app/public/user-data
-    environment:
-      - BASE_URL=http://localhost:3000
-      - DATABASE_URL=postgresql://planka:planka_password@planka_db:5432/planka
-      - SECRET_KEY=not_so_secret_key_for_local_use # Change this for production!
-    depends_on:
-      - planka_db
-        # condition: service_healthy
-
+        
 volumes:
   postgres_data:
   planka_db_data:
