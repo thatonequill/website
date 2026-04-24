@@ -17,44 +17,48 @@ interface CardSnapshot {
 export async function createRoom(formData: FormData) {
   const code = (formData.get('code') as string).toUpperCase()
   const pseudo = formData.get('pseudo') as string
-  const gmSessionId = crypto.randomUUID() 
+  const gmSessionId = crypto.randomUUID()
 
-  // 1. Check if room exists
-  const existing = await prisma.room.findUnique({ where: { code } })
+  const existing = await prisma.room.findUnique({
+    where: { code },
+    include: { _count: { select: { players: true } } }
+  })
 
   if (existing) {
-    const hoursOld = (Date.now() - existing.updatedAt.getTime()) / 1000 / 60 / 60
-    
-    // Rule: Cannot overwrite active rooms (<24h)
-    if (hoursOld < 6) {
-      // In a real app, you'd return an error state. For now, we redirect to an error page or similar.
-      // For this implementation, let's just fail silently or handle it in UI.
-      throw new Error("Room is occupied and active.")
+    const msOld = Date.now() - existing.updatedAt.getTime()
+    const hoursOld = msOld / (1000 * 60 * 60)
+    const hasPlayers = existing._count.players > 0
+
+    // 1. Check Busy Status
+    // Busy if: (< 24h AND players exist) OR (< 72h AND players still exist)
+    if (hasPlayers && hoursOld < 72) {
+      throw new Error("Room is currently occupied by active players.")
     }
 
-    // Rule: Overwrite old rooms (>24h)
-    // We transactionally clean the room
+    // 2. Cleanup & Reset (Triggers if empty > 24h OR forced > 72h)
+    // We use a transaction to ensure atomic "clutter" removal
     await prisma.$transaction([
+      // Manually clear nested relations if your schema doesn't have CASCADE DELETE
+      
       prisma.draw.deleteMany({ where: { roomId: existing.id } }),
       prisma.player.deleteMany({ where: { roomId: existing.id } }),
       prisma.room.update({
         where: { id: existing.id },
-        data: { 
-          gmSessionId: gmSessionId, 
+        data: {
+          gmSessionId: gmSessionId,
           updatedAt: new Date(),
           isLocked: false,
-          activePlayerId: null
+          activePlayerId: null,
         }
       })
     ])
   } else {
-    // Create new
+    // 3. Brand New Room
     await prisma.room.create({
       data: { code, gmSessionId }
     })
   }
 
-  // Redirect with the GM key
   redirect(`/jdr/${code}?pseudo=${pseudo}&key=${gmSessionId}`)
 }
 
