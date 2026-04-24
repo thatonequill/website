@@ -4,8 +4,18 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Table from './Table'
 import Controls from './ControlPanel'
+import { Moon, Sun } from 'lucide-react'
 
 export default function GameRoom({ room, initialDraws, cardLibrary, currentUser }: any) {
+  const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   const router = useRouter()
   const [draws, setDraws] = useState(initialDraws)
   const [activePlayerId, setActivePlayerId] = useState(room.activePlayerId)
@@ -29,8 +39,7 @@ export default function GameRoom({ room, initialDraws, cardLibrary, currentUser 
   }, [room])
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col md:flex-row">
-      
+    <div className="min-h-screen bg-background text-foreground flex flex-col md:flex-row">      
       {/* SIDEBAR: Players */}
       <aside className="w-full md:w-64 bg-card p-4 border-r border-border flex-shrink-0">
         <h2 className="text-xl font-bold text-primary mb-4 tracking-widest">
@@ -55,6 +64,14 @@ export default function GameRoom({ room, initialDraws, cardLibrary, currentUser 
           ))}
           {room.players.length === 0 && <div className="text-sm text-muted-foreground italic">Waiting for players...</div>}
         </div>
+        {/* Dark Mode Toggle */}
+        <button 
+          onClick={() => setDarkMode(!darkMode)}
+          className="p-2 rounded-full hover:bg-muted text-foreground transition-colors absolute bottom-5 left-5"
+          aria-label="Toggle Theme"
+        >
+          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
       </aside>
 
       {/* MAIN CONTENT */}
