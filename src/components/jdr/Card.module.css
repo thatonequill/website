@@ -1,7 +1,5 @@
 /* Card.module.css */
 
-@import "../../app/globals.css";
-
 .scene {
     perspective: 1000px;
     width: 145px;
