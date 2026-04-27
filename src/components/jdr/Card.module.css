@@ -1,4 +1,7 @@
 /* Card.module.css */
+
+@import "../../app/globals.css";
+
 .scene {
     perspective: 1000px;
     width: 145px;
@@ -27,7 +30,7 @@
 }
 
 .back {
-    background-color: #1e293b; /* slate-800 */
+    background-color: var(--muted);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +38,7 @@
 }
 
 .face {
-    background-color: #1e293b; /* slate-800 */
+    background-color: var(--muted);
     text-align: center;
     transform: rotateY(180deg);
 }

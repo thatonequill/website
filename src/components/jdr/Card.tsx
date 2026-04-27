@@ -35,7 +35,7 @@ export default function Card({ data, def, canFlip }: any) {
             <button 
               onClick={handleClick}
               disabled={isFlipping}
-              className="absolute inset-0 bg-background/40 hover:bg-background/20 flex items-center justify-center text-foreground font-bold tracking-widest transition-colors backdrop-blur-[2px] cursor-pointer z-10 rounded-xl"
+              className="absolute inset-0 bg-background/40 hover:bg-background/20 flex items-center justify-center text-primary font-bold tracking-widest transition-colors backdrop-blur-[2px] cursor-pointer z-10 rounded-xl"
             >
               CLICK<br/>TO<br/>FLIP
             </button>
