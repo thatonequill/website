@@ -72,9 +72,9 @@ export default async function PatchNotesPage({
             // This styles your # and ## automatically
             h1: ({node, ...props}) => <h1 className="text-3xl font-bold mb-6 text-slate-900" {...props} />,
             h2: ({node, ...props}) => <h2 className="text-2xl font-semibold mt-10 mb-4 text-slate-800 border-l-4 border-primary pl-4" {...props} />,
-            h3: ({node, ...props}) => <h3 className="text-lg font-bold mt-6 mb-2 text-slate-700" {...props} />,
-            ul: ({node, ...props}) => <ul className="list-disc ml-6 space-y-2" {...props} />,
-            blockquote: ({node, ...props}) => <blockquote className="italic border-l-4 border-muted pl-4 my-4 text-slate-600" {...props} />,
+            h3: ({node, ...props}) => <h3 className="text-lg font-bold mt-6 mb-2 text-slate-700 pl-6" {...props} />,
+            ul: ({node, ...props}) => <ul className="list-disc ml-16 space-y-2" {...props} />,
+            blockquote: ({node, ...props}) => <blockquote className="italic border-l-4 border-muted pl-2 my-4 text-slate-600" {...props} />,
           }}
         >
           {content}
