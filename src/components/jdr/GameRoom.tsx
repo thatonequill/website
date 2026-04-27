@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import Table from './Table'
 import Controls from './ControlPanel'
 import { Moon, Sun } from 'lucide-react'
+import Card from './Card'
+import { drawCardFromDeck } from '@/lib/jdr-actions'
 
 export default function GameRoom({ room, initialDraws, cardLibrary, currentUser }: any) {
   const [darkMode, setDarkMode] = useState(false);
@@ -37,9 +39,23 @@ export default function GameRoom({ room, initialDraws, cardLibrary, currentUser 
     setActivePlayerId(room.activePlayerId)
     setIsLocked(room.isLocked)
   }, [room])
+  
+  // Setup parameters to determine Deck status
+  const latestDraw = draws?.[0];
+  const isOwner = currentUser.id === latestDraw?.playerId;
+  const totalCards = latestDraw?.cardsSnapshot?.length || 0;
+  const undrawnCardsCount = latestDraw ? latestDraw.cardsSnapshot.filter((c: any) => c.isDrawn === false && !c.isRevealed).length : 0;
+
+  const handleDeckClick = async () => {
+    if (!latestDraw || !isOwner) return;
+    const nextCardIndex = latestDraw.cardsSnapshot.findIndex((c: any) => c.isDrawn === false && !c.isRevealed);
+    if (nextCardIndex !== -1) {
+      await drawCardFromDeck(latestDraw.id, nextCardIndex);
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col md:flex-row">      
+    <div className="h-[100dvh] bg-background text-foreground flex flex-col md:flex-row overflow-hidden">      
       {/* SIDEBAR: Players */}
       <aside className="w-full md:w-64 bg-card p-4 border-r border-border flex-shrink-0">
         <h2 className="text-xl font-bold text-primary mb-4 tracking-widest">
@@ -77,17 +93,39 @@ export default function GameRoom({ room, initialDraws, cardLibrary, currentUser 
       {/* MAIN CONTENT */}
       <main className="flex-1 flex flex-col relative overflow-hidden">
         {/* THE TABLE (Cards) */}
-        <div className="flex-1 overflow-y-auto p-4 md:p-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-card to-background">
-           <Table 
-             draws={draws} 
-             cardLibrary={cardLibrary} 
-             currentUser={currentUser}
-             activePlayerId={activePlayerId}
-           />
+        <div className="flex-1 overflow-y-auto p-4 md:p-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-card to-background flex flex-col items-left">
+           
+           {/* THE DECK PILE */}
+           {latestDraw && undrawnCardsCount > 0 && (
+             <div className="mb-8 md:mb-12 flex flex-col items-left animate-in fade-in duration-500">
+               <p className="text-secondary text-sm font-bold uppercase mb-4 tracking-widest">
+                 {isOwner ? `Click to Draw (${totalCards - undrawnCardsCount + 1}/${totalCards})` : `Drawing (${totalCards - undrawnCardsCount}/${totalCards})...`}
+               </p>
+               <div className="relative w-32 h-48 md:w-40 md:h-60">
+                 {undrawnCardsCount > 1 && (
+                   <div className="absolute inset-0 translate-x-2 translate-y-2 opacity-50 pointer-events-none">
+                     <Card isDeck={true} />
+                   </div>
+                 )}
+                 <div className="absolute inset-0 z-10">
+                   <Card isDeck={true} onDeckClick={handleDeckClick} />
+                 </div>
+               </div>
+             </div>
+           )}
+           
+           <div className="w-full flex-1">
+             <Table 
+               draws={draws} 
+               cardLibrary={cardLibrary} 
+               currentUser={currentUser}
+               activePlayerId={activePlayerId}
+             />
+           </div>
         </div>
 
         {/* CONTROLS (Bottom Bar) */}
-        <div className="bg-card border-t border-border p-4 z-10">
+        <div className="bg-card border-t border-border p-4 z-10 flex-shrink-0 mt-auto">
           <Controls 
             room={room} 
             currentUser={currentUser} 

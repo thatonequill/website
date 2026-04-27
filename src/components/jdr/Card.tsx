@@ -4,9 +4,27 @@ import styles from './Card.module.css'
 import { revealCard } from '@/lib/jdr-actions'
 import { useState } from 'react'
 
-export default function Card({ data, def, canFlip }: any) {
+export default function Card({ data, def, canFlip, isDeck, onDeckClick }: any) {
   const [isFlipping, setIsFlipping] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Special mode: just render the card back for the deck pile
+  if (isDeck) {
+    return (
+      <div className={`${styles.scene} cursor-pointer transition-transform duration-300 hover:-translate-y-2 hover:scale-105`} onClick={onDeckClick}>
+        <div className={styles.card}>
+          <div className={styles.back}>
+            <img src="/images/jdr/CardBackDark.avif" alt="Deck" className="w-full h-full object-cover shadow-xl rounded-[inherit]" />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  const isUndrawn = data?.isDrawn === false && !data?.isRevealed;
+  if (!isDeck && isUndrawn) {
+    return null; // Hide from the table if it's still in the deck pile!
+  }
   
   const handleClick = async () => {
     if (canFlip && !data.isRevealed) {
@@ -27,24 +45,18 @@ export default function Card({ data, def, canFlip }: any) {
 
   return (
     <>
-      <div className={styles.scene}>
+      <div 
+        className={`${styles.scene} animate-in fade-in slide-in-from-top-8 zoom-in-75 duration-300`}
+        style={{ animationFillMode: 'both' }}
+      >
         <div className={`${styles.card} ${data.isRevealed ? styles.flipped : ''}`}>
           
           {/* BACK OF CARD */}
-          <div className={styles.back}>
-            {/* Decorative Pattern */}
-            <img src="/images/jdr/CardBackDark.avif" alt="Card Back" className="w-full h-full object-cover" />
-            
-            {/* Reveal Button Overlay */}
-            {canFlip && !data.isRevealed && (
-              <button 
-                onClick={handleClick}
-                disabled={isFlipping}
-                className="absolute inset-0 bg-background/40 hover:bg-background/20 flex items-center justify-center text-primary font-bold tracking-widest transition-colors backdrop-blur-[2px] cursor-pointer z-10 rounded-xl"
-              >
-                CLICK<br/>TO<br/>FLIP
-              </button>
-            )}
+          <div 
+            className={`${styles.back} ${canFlip && !data.isRevealed && !isFlipping ? 'cursor-pointer hover:brightness-110 transition-all' : ''}`}
+            onClick={(canFlip && !data.isRevealed && !isFlipping) ? handleClick : undefined}
+          >
+            <img src="/images/jdr/CardBackDark.avif" alt="Card Back" className="w-full h-full object-cover rounded-[inherit]" />
           </div>
 
           {/* FACE OF CARD */}

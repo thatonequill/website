@@ -10,6 +10,7 @@ interface CardSnapshot {
   position: number
   isReversed: boolean
   isRevealed: boolean
+  isDrawn?: boolean
 }
 
 // --- 1. ROOM MANAGEMENT ---
@@ -95,7 +96,8 @@ export async function performDraw(roomId: string, playerId: string, cardCount: n
     cardId: card.id,
     position: index,
     isReversed: Math.random() < 0.38, 
-    isRevealed: false 
+    isRevealed: false,
+    isDrawn: false
   }))
 
   // 4. Save
@@ -105,6 +107,25 @@ export async function performDraw(roomId: string, playerId: string, cardCount: n
       playerId,
       cardsSnapshot: snapshot as any 
     }
+  })
+
+  revalidatePath(`/jdr/[code]`)
+}
+
+export async function drawCardFromDeck(drawId: string, cardIndex: number) {
+  const draw = await prisma.draw.findUnique({ where: { id: drawId } })
+  if (!draw) return
+
+  const currentSnapshot = draw.cardsSnapshot as unknown as CardSnapshot[]
+  
+  if (currentSnapshot[cardIndex]) {
+    currentSnapshot[cardIndex].isDrawn = true
+    currentSnapshot[cardIndex].isRevealed = true
+  }
+
+  await prisma.draw.update({
+    where: { id: drawId },
+    data: { cardsSnapshot: currentSnapshot as any }
   })
 
   revalidatePath(`/jdr/[code]`)
