@@ -9,7 +9,8 @@ from dotenv import load_dotenv
 load_dotenv()
 API_KEY = os.getenv("TRELLO_API_KEY")
 TOKEN = os.getenv("TRELLO_TOKEN")
-LIST_ID = os.getenv("TRELLO_LIST_ID")
+TOPUSH_ID = os.getenv("TRELLO_LIST_TOPUSH_ID")
+DONE_ID = os.getenv("TRELLO_LIST_DONE_ID")
 
 # --- CUSTOM SORTING CONFIGURATION ---
 # Lower number = Higher priority.
@@ -39,9 +40,18 @@ def get_closest_friday():
     return closest_friday.strftime("%Y%m%d")
 
 def fetch_cards():
-    url = f"https://api.trello.com/1/lists/{LIST_ID}/cards"
+    url = f"https://api.trello.com/1/lists/{TOPUSH_ID}/cards"
     query = {'key': API_KEY, 'token': TOKEN}
     return requests.get(url, params=query).json()
+
+def move_cards_to_done(cards):
+    print(f"Moving {len(cards)} cards to Done...")
+    query = {'key': API_KEY, 'token': TOKEN, 'idList': DONE_ID}
+    for card in cards:
+        url = f"https://api.trello.com/1/cards/{card['id']}"
+        resp = requests.put(url, params=query)
+        if resp.status_code != 200:
+            print(f"Failed to move card: {card['name']}")
 
 def to_past_tense(text):
     # Dictionary of common dev verbs
@@ -144,6 +154,7 @@ def run():
             f.write(header + new_content)
 
     print("Success!")
+    move_cards_to_done(cards)
 
 if __name__ == "__main__":
     run()
