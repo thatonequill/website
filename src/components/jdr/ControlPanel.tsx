@@ -1,5 +1,5 @@
 'use client'
-import { performDraw, setActivePlayer, toggleLock } from '@/lib/jdr-actions'
+import { performDraw, setActivePlayer, toggleLock, emptyRoom } from '@/lib/jdr-actions'
 import { useTransition } from 'react'
 
 export default function Controls({ room, currentUser, activePlayerId }: any) {
@@ -47,6 +47,18 @@ export default function Controls({ room, currentUser, activePlayerId }: any) {
              className="px-4 py-2 bg-muted hover:bg-muted/50 rounded text-muted-foreground text-sm font-bold border border-border"
            >
              {room.isLocked ? "🔒 UNLOCK ROOM" : "🔓 LOCK ROOM"}
+           </button>
+
+           {/* Empty Room Button */}
+           <button 
+             onClick={() => {
+               if (confirm('Are you sure you want to empty the room? This will kick all players and delete all draws.')) {
+                 startTransition(() => emptyRoom(room.id))
+               }
+             }}
+             className="px-4 py-2 bg-muted hover:bg-muted/50 rounded text-muted-foreground text-sm font-bold border border-border"
+           >
+             🗑️ EMPTY ROOM
            </button>
         </div>
       </div>

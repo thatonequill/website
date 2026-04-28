@@ -80,7 +80,7 @@ export async function joinRoom(formData: FormData) {
   redirect(`/jdr/${code}?pseudo=${pseudo}`)
 }
 
-// --- 2. GAME PLAY ---
+// --- 2. GAMEPLAY ---
 
 export async function performDraw(roomId: string, playerId: string, cardCount: number) {
   // 1. Get all card IDs
@@ -160,13 +160,28 @@ export async function setActivePlayer(roomId: string, playerId: string) {
   revalidatePath('/jdr/[code]', 'page') 
 }
 
-/**
- * GM: Lock/Unlock room to prevent new joins
- */
 export async function toggleLock(roomId: string, isLocked: boolean) {
   await prisma.room.update({
     where: { id: roomId },
     data: { isLocked }
   })
   revalidatePath('/jdr/[code]', 'page')
+}
+
+export async function emptyRoom(roomId: string) {
+  await prisma.$transaction([
+    // 1. Delete all draws associated with the room
+    prisma.draw.deleteMany({
+      where: { roomId },
+    }),
+    // 2. Delete all players associated with the room
+    prisma.player.deleteMany({
+      where: { roomId },
+    }),
+    // 3. Reset the active player on the room to null
+    prisma.room.update({
+      where: { id: roomId },
+      data: { activePlayerId: null },
+    }),
+  ]);
 }
