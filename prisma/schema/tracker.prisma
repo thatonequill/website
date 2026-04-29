@@ -1,0 +1,11 @@
+model Application {
+    id      String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    company String
+    role    String
+    status  String
+    link    String?
+
+    createdAt DateTime @default(now())
+
+    @@schema("tracker")
+}

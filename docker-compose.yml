@@ -29,6 +29,7 @@ services:
       - DATABASE_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
       
       - DIRECT_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
+      - TRACKER_ADMIN_PASSWORD=Quill
       
     depends_on:
       db:

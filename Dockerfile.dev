@@ -20,4 +20,4 @@ COPY files/ ./files/
 RUN npm install
 
 # The CMD runs your custom start script
-CMD ["./files/start.sh"]
+CMD ["sh", "./files/start.sh"]
