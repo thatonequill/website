@@ -44,6 +44,9 @@ importers:
       react-to-print:
         specifier: ^3.2.0
         version: 3.3.0(react@19.2.3)
+      supabase:
+        specifier: ^2.95.6
+        version: 2.95.6
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4
@@ -72,9 +75,6 @@ importers:
       prisma:
         specifier: ^7.2.0
         version: 7.8.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
-      supabase:
-        specifier: ^2.76.16
-        version: 2.95.4
       tailwindcss:
         specifier: ^4
         version: 4.2.4
@@ -2772,8 +2772,8 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  supabase@2.95.4:
-    resolution: {integrity: sha512-UmyiQ7Bzx/5XnsOoYdldLKQlF//SpXGRaQpr00teMfeo/ZMgJ8jp9jRAvf0qeNUVhN6A7U7GMk7A0nhFQ+UabA==}
+  supabase@2.95.6:
+    resolution: {integrity: sha512-gjAT6wYBvmKoS34IjpTp9VDve1sfwcM/s+Q5rJA3OBw8d6nVTdA8edYVz/rfPEMt1V/EY40g63IL6qMBLPvrFw==}
     engines: {npm: '>=8'}
     hasBin: true
 
@@ -5880,7 +5880,7 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.29.0
 
-  supabase@2.95.4:
+  supabase@2.95.6:
     dependencies:
       bin-links: 6.0.0
       https-proxy-agent: 9.0.0
