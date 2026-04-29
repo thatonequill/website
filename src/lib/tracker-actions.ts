@@ -35,7 +35,7 @@ export async function addApplication(formData: FormData) {
     if (typeof role !== 'string' || role.trim() === '') {
       throw new Error('Role is required.');
     }
-    if (typeof status !== 'string' || !VALID_APPLICATION_STATUSES.includes(status)) {
+    if (typeof status !== 'string' || !(VALID_APPLICATION_STATUSES as readonly string[]).includes(status)) {
       throw new Error('Invalid status provided.');
     }
     // Link is optional, if provided and not empty, use it, otherwise null.
@@ -75,7 +75,7 @@ export async function updateApplicationStatus(formData: FormData) {
     if (typeof id !== 'string' || id.trim() === '') {
       throw new Error('Application ID is required.');
     }
-    if (typeof status !== 'string' || !VALID_APPLICATION_STATUSES.includes(status)) {
+    if (typeof status !== 'string' || !(VALID_APPLICATION_STATUSES as readonly string[]).includes(status)) {
       throw new Error('Invalid status provided.');
     }
     // 3. Update in Prisma
