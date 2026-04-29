@@ -10,7 +10,7 @@
     "postinstall": "prisma generate --schema=./prisma/schema/",
     "db:generate": "prisma generate --schema=./prisma/schema/",
     "db:push": "prisma db push --schema=./prisma/schema/ --accept-data-loss",
-    "db:seed": "sh -c 'psql $DATABASE_URL -f prisma/Card_rows.sql'"
+    "db:seed": "psql $DATABASE_URL -f ./prisma/Card_rows.sql"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",
