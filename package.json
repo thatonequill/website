@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "--schema=./prisma/schema && prisma db push --schema=./prisma/schema && next build",
+    "build": "prisma generate --schema=./prisma/schema && prisma db push --schema=./prisma/schema && next build",
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate --schema=./prisma/schema/",
     "db:generate": "prisma generate --schema=./prisma/schema/",
     "db:push": "prisma db push --schema=./prisma/schema/ --accept-data-loss",
-    "db:seed": "psql $DATABASE_URL -f ./prisma/Card_rows.sql"
+    "db:seed": "sh -c 'psql $DATABASE_URL -f prisma/Card_rows.sql'"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",
