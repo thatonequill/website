@@ -6,7 +6,7 @@ import { updateApplicationStatus } from '@/lib/tracker-actions';
 interface StatusUpdateFormProps {
   applicationId: string;
   currentStatus: string;
-  statusOptions: string[];
+  statusOptions: readonly string[]; // Changed to readonly string[]
 }
 
 export default function StatusUpdateForm({
