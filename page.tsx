@@ -1,7 +1,7 @@
 import React from 'react';
 import { Briefcase, Building, ExternalLink, Plus } from 'lucide-react';
 import { prisma } from '@/lib/db';
-import { addApplication, updateApplicationStatus } from '@/lib/tracker-actions';
+import { addApplication } from '@/lib/tracker-actions';
 import StatusUpdateForm from '@/components/StatusUpdateForm';
 
 export default async function TrackerPage() {
