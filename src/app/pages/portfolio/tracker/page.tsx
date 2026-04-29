@@ -1,8 +1,9 @@
 import React from 'react';
 import { Briefcase, Building, ExternalLink, Plus } from 'lucide-react';
 import { prisma } from '@/lib/db';
-import { addApplication, updateApplicationStatus } from '@/lib/tracker-actions';
+import { addApplication } from '@/lib/tracker-actions';
 import StatusUpdateForm from '@/components/StatusUpdateForm';
+import { VALID_APPLICATION_STATUSES } from '@/lib/constants';
 
 export default async function TrackerPage() {
   // Fetch applications from Prisma
@@ -12,14 +13,7 @@ export default async function TrackerPage() {
     },
   });
 
-  // Define the possible status options for the select dropdown
-  const statusOptions = [
-    'To Apply',
-    'Applied',
-    'Interviewing',
-    'Offer',
-    'Rejected',
-  ];
+  const statusOptions = VALID_APPLICATION_STATUSES;
 
   return (
     <div className="max-w-4xl mx-auto py-20 px-4 space-y-12">

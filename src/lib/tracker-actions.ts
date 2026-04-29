@@ -2,15 +2,7 @@
 
 import { prisma } from '@/lib/db'
 import { revalidatePath } from 'next/cache'
-
-// Define the possible status options for validation
-const VALID_STATUSES = [
-  'To Apply',
-  'Applied',
-  'Interviewing',
-  'Offer',
-  'Rejected',
-];
+import { VALID_APPLICATION_STATUSES } from '@/lib/constants';
 
 // Helper for password verification
 function verifyAdminPassword(password: FormDataEntryValue | null) {
@@ -43,7 +35,7 @@ export async function addApplication(formData: FormData) {
     if (typeof role !== 'string' || role.trim() === '') {
       throw new Error('Role is required.');
     }
-    if (typeof status !== 'string' || !VALID_STATUSES.includes(status)) {
+    if (typeof status !== 'string' || !VALID_APPLICATION_STATUSES.includes(status)) {
       throw new Error('Invalid status provided.');
     }
     // Link is optional, if provided and not empty, use it, otherwise null.
@@ -60,15 +52,15 @@ export async function addApplication(formData: FormData) {
     });
 
     // 4. Revalidate the page to show the new data instantly
-    revalidatePath('/tracker');
+    revalidatePath('/pages/portfolio/tracker');
   } catch (error) {
     console.error('Error adding application:', error);
     // Re-throw or return a specific error message to the client if needed
     throw error; // Let Next.js handle the error boundary or client-side catch
   }
 }
-
-type ApplicationStatus = 'To Apply' | 'Applied' | 'Interviewing' | 'Offer' | 'Rejected';
+ 
+type ApplicationStatus = typeof VALID_APPLICATION_STATUSES[number];
 
 export async function updateApplicationStatus(formData: FormData) {
   try {
@@ -83,7 +75,7 @@ export async function updateApplicationStatus(formData: FormData) {
     if (typeof id !== 'string' || id.trim() === '') {
       throw new Error('Application ID is required.');
     }
-    if (typeof status !== 'string' || !VALID_STATUSES.includes(status)) {
+    if (typeof status !== 'string' || !VALID_APPLICATION_STATUSES.includes(status)) {
       throw new Error('Invalid status provided.');
     }
     // 3. Update in Prisma
@@ -93,7 +85,7 @@ export async function updateApplicationStatus(formData: FormData) {
     });
 
     // 4. Revalidate the page
-    revalidatePath('/tracker');
+    revalidatePath('/pages/portfolio/tracker');
   } catch (error) {
     console.error('Error updating application status:', error);
     throw error;
