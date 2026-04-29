@@ -40,7 +40,7 @@ const resumeData = {
     },
     profile: {
       role: "Étudiant Développeur",
-      location: "Nantes / Lannion, France",
+      location: "Nantes / Montpellier, France",
     },
     languages: [
       { name: "Français", level: "Natif" },
@@ -54,6 +54,13 @@ const resumeData = {
       { name: "Godot", detail: "Game Engine" }
     ],
     experience: [
+      {
+        "role": "Développeur Stagiaire",
+        "company": "Synergie",
+        "location": "Orvault, France",
+        "period": "Avril 2026 - Juillet 2026 (En cours)",
+        "description": "Conception et développement de micro-projets d'automatisation. Une description détaillée des réalisations sera ajoutée à l'issue du stage."
+      },
       {
         role: "Développeur Stagiaire",
         company: "Synergie",
@@ -77,6 +84,13 @@ const resumeData = {
       }
     ],
     education: [
+      {
+        role: "Master Informatique - Développement Logiciel (Bac +5)",
+        company: "IRIS",
+        location: "Montpellier, France",
+        period: "2026 - 2028 (À venir)",
+        description: "Formation d'Expert en Informatique et Développement Logiciel réalisée en alternance. Focus sur l'architecture logicielle, le management de projet agile et les technologies full-stack avancées."
+      },
       {
         role: "BUT Informatique (3ème année)",
         company: "IUT Lannion",
@@ -114,7 +128,7 @@ const resumeData = {
     },
     profile: {
       role: "Student Developer",
-      location: "Nantes / Lannion, France",
+      location: "Nantes / Montpellier, France",
     },
     languages: [
       { name: "French", level: "Native" },
@@ -128,6 +142,13 @@ const resumeData = {
       { name: "Godot", detail: "Game Engine" }
     ],
     experience: [
+      {
+        "role": "Software Developer Intern",
+        "company": "Synergie",
+        "location": "Orvault, France",
+        "period": "April 2026 - July 2026 (Ongoing)",
+        "description": "Development of automation mini-projects. A detailed description of missions and technical outcomes will be provided upon completion of the internship."
+      },
       {
         role: "Intern Developer",
         company: "Synergie",
@@ -151,6 +172,13 @@ const resumeData = {
       }
     ],
     education: [
+      {
+        role: "Master's Degree in Software Development (Bac +5)",
+        company: "IRIS",
+        location: "Montpellier, France",
+        period: "2026 - 2028 (Upcoming)",
+        description: "Expert in Computer Science and Software Development program via an apprenticeship. Focus on software architecture, agile project management, and advanced full-stack technologies."
+      },
       {
         role: "BUT Computer Science (3rd Year)",
         company: "IUT Lannion",
