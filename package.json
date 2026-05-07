@@ -7,7 +7,7 @@
     "build": "prisma generate --schema=./prisma/schema && prisma db push --schema=./prisma/schema && next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate --schema=./prisma/schema/",
+    "postinstall": "",
     "db:generate": "prisma generate --schema=./prisma/schema/",
     "db:push": "prisma db push --schema=./prisma/schema/ --accept-data-loss",
     "db:seed": "sh -c 'psql $DATABASE_URL -f prisma/Card_rows.sql'"

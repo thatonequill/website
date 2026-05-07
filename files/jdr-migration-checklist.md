@@ -4,27 +4,27 @@ Use this checklist to track the separation of the JDR application from the main 
 
 ## 🔲 Phase 1: New Project Initialization
 
-- [ ] Initialize new Next.js project (`npx create-next-app jdr-app`).
-- [ ] Install core dependencies (Prisma, Tailwind CSS, lucide-react, etc.).
-- [ ] Copy basic configuration files (Tailwind config, TS config).
-- [ ] Set up `.env` file for the new project (Database URL, etc.).
+- [x] Initialize new Next.js project (`npx create-next-app jdr-app`).
+- [x] Install core dependencies (Prisma, Tailwind CSS, lucide-react, etc.).
+- [x] Copy basic configuration files.
+- [x] Set up `.env` file for the new project (Database URL, etc.).
 
 ## 🔲 Phase 2: Database & Schema Migration
 
-- [ ] Extract JDR models from the main `schema.prisma`:
-    - [ ] `Room`
-    - [ ] `Player`
-    - [ ] `Draw`
-    - [ ] `Card` (or move to a static JSON file as per optimization strategies).
-- [ ] Setup Prisma in the new project (`npx prisma init`).
-- [ ] Paste the extracted models into the new `schema.prisma`.
-- [ ] Run `npx prisma db push` or `npx prisma migrate dev` to generate the new database tables.
-- [ ] Setup the Prisma client singleton (`src/lib/db.ts`).
+- [x] Extract JDR models from the main `schema.prisma`:
+    - [x] `Room`
+    - [x] `Player`
+    - [x] `Draw`
+    - [x] `Card` (or move to a static JSON file as per optimization strategies).
+- [x] Setup Prisma in the new project (`npx prisma init`).
+- [x] Paste the extracted models into the new `schema.prisma`.
+- [x] Run `npx prisma db push` or `npx prisma migrate dev` to generate the new database tables.
+- [x] Setup the Prisma client singleton (`src/lib/db.ts`).
 
 ## 🔲 Phase 3: Backend Logic & Server Actions
 
-- [ ] Move `src/lib/jdr-actions.ts` to the new project.
-- [ ] Review and update imports in `jdr-actions.ts` (ensure database paths are correct).
+- [x] Move `src/lib/jdr-actions.ts` to the new project.
+- [x] Review and update imports in `jdr-actions.ts` (ensure database paths are correct).
 - [ ] **Optimization (Optional but recommended during move):**
     - [ ] Refactor `setInterval` polling to Server-Sent Events (SSE), WebSockets, or Supabase/Pusher.
     - [ ] Refactor random row selection to use `prisma.$queryRaw` for better performance.
@@ -34,10 +34,10 @@ Use this checklist to track the separation of the JDR application from the main 
 - [ ] Move JDR UI components (Cards, Deck, Fullscreen views, Game Board).
 - [ ] Move routing pages:
     - [ ] Entry point / Room creation page.
-    - [ ] `src/app/jdr/[code]/page.tsx` (Dynamic room page).
-- [ ] Move static assets:
-    - [ ] Card images / backgrounds from the `public/` directory.
-    - [ ] Any specific icons or sounds used in the JDR.
+    - [x] `src/app/jdr/[code]/page.tsx` (Dynamic room page).
+- [x] Move static assets:
+    - [x] Card images / backgrounds from the `public/` directory.
+    - [x] Any specific icons or sounds used in the JDR.
 
 ## 🔲 Phase 5: Cleanup Main Website (Post-Migration)
 

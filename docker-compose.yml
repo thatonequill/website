@@ -1,8 +1,8 @@
 services:
   db:
     image: postgres:15-alpine
-    ports:
-      - "4444:5432" # Maps your requested port 4444 to the DB. Connect your SQL viewer to localhost:4444!
+    ports: # Maps host port 4000 to container port 5432 for the database
+      - "4000:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: local_dev_password
@@ -19,8 +19,8 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.dev
-    ports:
-      - "3333:3333" # Next.js accessible at localhost:3333
+    ports: # Maps host port 3000 to container port 3000 for the Next.js app
+      - "3000:3000"
     volumes:
       - .:/app
       - /app/node_modules # Prevents your local machine's node_modules from conflicting with the container's
