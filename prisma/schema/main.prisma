@@ -8,5 +8,26 @@ generator client {
 datasource db {
     provider = "postgresql"
 
-    schemas = ["jdr", "charTracker", "tracker"]
+    schemas = ["public", "tracker", "bench_genshin", "bench_hsr", "bench_zzz"]
+}
+
+enum Rarity {
+    UNCOMMON
+    COMMON
+    RARE
+    RAREST
+
+    @@schema("public")
+}
+
+model User {
+    id          String    @id @db.Uuid
+    username    String
+    avatarURL   String
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    deletedAt   DateTime?
+    bench_theme String?
+
+    @@schema("public")
 }

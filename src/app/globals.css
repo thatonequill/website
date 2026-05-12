@@ -32,7 +32,7 @@
     --primary: #be185d; /* Rose-700 (Pink/Red) */
     --primary-foreground: #ffffff; /* White */
 
-    --secondary: oklch(66.6% 0.179 58.318); /* Amber-600 */
+    --secondary: oklch(59.2% 0.249 0.584); /* Pink-600 */
     --secondary-foreground: #ffffff; /* White */
 
     --muted: #fde2e4; /* Rose-100 */
@@ -50,10 +50,10 @@
     --card: #1c1917; /* Stone-900 */
     --card-foreground: #f8fafc; /* Slate-50 */
 
-    --primary: oklch(70.4% 0.191 22.216); /* Red-400 */
+    --primary: oklch(64.5% 0.246 16.439); /* Amber-600 */
     --primary-foreground: #0c0a09; /* Stone-950 */
 
-    --secondary: oklch(76.9% 0.188 70.08); /* Amber-500 */
+    --secondary: oklch(70.4% 0.191 22.216); /* Red-400 */
     --secondary-foreground: #0c0a09; /* Stone-950 */
 
     --muted: #292524; /* Stone-800 */

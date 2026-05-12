@@ -49,18 +49,9 @@ export const RankB = ({ size = 'md', className = "" }: RankIconProps) => (
 export const RankC = ({ size = 'md', className = "" }: RankIconProps) => (
   <div className={`
     ${baseStyles} ${sizes[size]} ${className}
-    bg-gradient-to-br from-emerald-400 to-green-600 text-white shadow-emerald-500/40
-  `}>
-    C
-  </div>
-);
-
-export const RankD = ({ size = 'md', className = "" }: RankIconProps) => (
-  <div className={`
-    ${baseStyles} ${sizes[size]} ${className}
     bg-gradient-to-br from-slate-400 to-slate-600 text-white shadow-slate-500/40
   `}>
-    D
+    C
   </div>
 );
 
@@ -72,7 +63,6 @@ export const RankBadge = ({ rank, size = 'md' }: { rank: string, size?: 'sm' | '
     case 'A': return <RankA size={size} />;
     case 'B': return <RankB size={size} />;
     case 'C': return <RankC size={size} />;
-    case 'D': return <RankD size={size} />;
     default: return <div className={`${baseStyles} ${sizes[size]} bg-slate-200 text-slate-400`}>?</div>;
   }
 };

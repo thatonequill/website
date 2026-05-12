@@ -1,0 +1,157 @@
+// File: prisma/schema/bench_zzz.prisma
+
+enum ZZZAttribute {
+    PHYSICAL
+    FIRE
+    ICE
+    ELECTRIC
+    ETHER
+    WIND
+
+    @@schema("bench_zzz")
+}
+
+enum ZZZFightingStyle {
+    ATTACK
+    STUN
+    ANOMALY
+    SUPPORT
+    DEFENSE
+    RUPTURE
+
+    @@schema("bench_zzz")
+}
+
+enum ZZZStat {
+    HP_FLAT
+    HP_PERCENT
+    ATK_FLAT
+    ATK_PERCENT
+    DEF_FLAT
+    DEF_PERCENT
+    CRIT_RATE
+    CRIT_DMG
+    PEN_FLAT
+    PEN_RATIO
+    ANOMALY_PROFICIENCY
+    ANOMALY_MASTERY
+    IMPACT
+    ENERGY_REGEN
+    PHYSICAL_DMG
+    FIRE_DMG
+    ICE_DMG
+    ELECTRIC_DMG
+    ETHER_DMG
+    WIND_DMG
+
+    @@schema("bench_zzz")
+}
+
+enum ZZZCoreLevel {
+    A
+    B
+    C
+    D
+    E
+    F
+
+    @@schema("bench_zzz")
+}
+
+model ZZZWEngine {
+    id            String           @id @default(cuid())
+    name          String
+    rarity        Rarity
+    fightingStyle ZZZFightingStyle
+    builds        ZZZBuild[]
+    zzzcharacters ZZZCharacter[]
+
+    @@map("WEngine")
+    @@schema("bench_zzz")
+}
+
+model ZZZCharacter {
+    id               String           @id @default(cuid())
+    name             String
+    rarity           Rarity
+    attribute        ZZZAttribute
+    fightingStyle    ZZZFightingStyle
+    WEngineId        String
+    signatureWEngine ZZZWEngine       @relation(fields: [WEngineId], references: [id])
+    builds           ZZZBuild[]
+
+    // Base stats @ Level 60 [cite: 9, 10]
+    hp                 Int
+    atk                Int
+    def                Int
+    impact             Int
+    anomalyMastery     Int
+    anomalyProficiency Int
+    critRate           Float
+    critDmg            Float
+    energyRegen        Float
+    penRatio           Float
+
+    @@map("Character")
+    @@schema("bench_zzz")
+}
+
+model ZZZDiscDrive {
+    id    String @id @default(cuid())
+    slot  Int // 1 through 6
+    level Int    @default(0) // 0-15
+    set   String // e.g., "Woodpecker Electro"
+
+    // Main Stat
+    mainStat      ZZZStat
+    mainStatValue Float
+
+    // Sub Stats (1 to 4)
+    subStat1      ZZZStat?
+    subStat1Value Float?
+    subStat2      ZZZStat?
+    subStat2Value Float?
+    subStat3      ZZZStat?
+    subStat3Value Float?
+    subStat4      ZZZStat?
+    subStat4Value Float?
+
+    buildId String
+    build   ZZZBuild @relation(fields: [buildId], references: [id])
+
+    @@map("DiscDrive")
+    @@schema("bench_zzz")
+}
+
+model ZZZBuild {
+    id   String @id @default(cuid())
+    name String @default("New Build")
+
+    // Character Info
+    characterId String
+    character   ZZZCharacter @relation(fields: [characterId], references: [id])
+    level       Int          @default(60)
+    mindscape   Int          @default(0) // M0 through M6
+
+    // W-Engine Info
+    wEngineId    String
+    wEngine      ZZZWEngine @relation(fields: [wEngineId], references: [id])
+    wEngineLevel Int        @default(60)
+    wEnginePhase Int        @default(1) // P1 through P5
+
+    // Disc Drives (The 6 slots)
+    discs ZZZDiscDrive[]
+
+    // Skill Levels (Usually 1-12)
+    skillBasic   Int @default(1)
+    skillDodge   Int @default(1)
+    skillAssist  Int @default(1)
+    skillSpecial Int @default(1)
+    skillChain   Int @default(1) // Covers Chain & Ultimate
+
+    // Core Upgrade (A through F)
+    coreLevel ZZZCoreLevel @default(A)
+
+    @@map("Build")
+    @@schema("bench_zzz")
+}

@@ -1,0 +1,145 @@
+// File: prisma/schema/bench_hsr.prisma
+// Models for Honkai: Star Rail character tracking and building
+
+enum HSRElement {
+    PHYSICAL
+    FIRE
+    ICE
+    LIGHTNING
+    WIND
+    QUANTUM
+    IMAGINARY
+
+    @@schema("bench_hsr")
+}
+
+enum HSRPath {
+    DESTRUCTION
+    HUNT
+    ERUDITION
+    HARMONY
+    NIHILITY
+    PRESERVATION
+    ABUNDANCE
+    REMEMBRANCE
+    ELATION
+
+    @@schema("bench_hsr")
+}
+
+enum HSRStat {
+    HP_FLAT
+    HP_PERCENT
+    ATK_FLAT
+    ATK_PERCENT
+    DEF_FLAT
+    DEF_PERCENT
+    SPEED
+    CRIT_RATE
+    CRIT_DMG
+    BREAK_EFFECT
+    EFFECT_HIT_RATE
+    EFFECT_RES
+    ENERGY_REGEN_RATE
+    OUTGOING_HEALING
+    PHYSICAL_DMG
+    FIRE_DMG
+    ICE_DMG
+    LIGHTNING_DMG
+    WIND_DMG
+    QUANTUM_DMG
+    IMAGINARY_DMG
+
+    @@schema("bench_hsr")
+}
+
+model HSRLightCone {
+    id            String         @id @default(cuid())
+    name          String
+    rarity        Rarity
+    path          HSRPath
+    builds        HSRBuild[]
+    hsrcharacters HSRCharacter[]
+
+    @@map("LightCone")
+    @@schema("bench_hsr")
+}
+
+model HSRCharacter {
+    id              String       @id @default(cuid())
+    name            String
+    rarity          Rarity
+    element         HSRElement
+    path            HSRPath
+    hsrLightConeId  String
+    signatureWeapon HSRLightCone @relation(fields: [hsrLightConeId], references: [id])
+    builds          HSRBuild[]
+
+    // Base stats @ Level 80
+    hp        Int
+    atk       Int
+    def       Int
+    speed     Int
+    critRate  Float
+    critDmg   Float
+    maxEnergy Int
+
+    @@map("Character")
+    @@schema("bench_hsr")
+}
+
+model HSRRelic {
+    id    String @id @default(cuid())
+    slot  Int // 1-4: Cavern Relics, 5-6: Planar Ornaments
+    level Int    @default(0) // 0-15
+    set   String
+
+    // Main Stat
+    mainStat      HSRStat
+    mainStatValue Float
+
+    // Sub Stats (1 to 4)
+    subStat1      HSRStat?
+    subStat1Value Float?
+    subStat2      HSRStat?
+    subStat2Value Float?
+    subStat3      HSRStat?
+    subStat3Value Float?
+    subStat4      HSRStat?
+    subStat4Value Float?
+
+    buildId String
+    build   HSRBuild @relation(fields: [buildId], references: [id])
+
+    @@map("Relic")
+    @@schema("bench_hsr")
+}
+
+model HSRBuild {
+    id   String @id @default(cuid())
+    name String @default("New Build")
+
+    // Character Info
+    characterId String
+    character   HSRCharacter @relation(fields: [characterId], references: [id])
+    level       Int          @default(80)
+    eidolon     Int          @default(0) // E0 through E6
+
+    // Light Cone Info
+    lightConeId   String
+    lightCone     HSRLightCone @relation(fields: [lightConeId], references: [id])
+    lcLevel       Int          @default(80)
+    superposition Int          @default(1) // S1 through S5
+
+    // Relics (The 6 slots)
+    relics HSRRelic[]
+
+    // Trace Levels (Standard max 10, goes higher with Eidolons)
+    traceBasic  Int @default(1)
+    traceSkill  Int @default(1)
+    traceUlt    Int @default(1)
+    traceTalent Int @default(1)
+
+    @@map("Build")
+    @@schema("bench_hsr")
+}
