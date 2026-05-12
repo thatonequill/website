@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 // import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -13,9 +13,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: '#be185d',
+};
+
 export const metadata: Metadata = {
   title: "Qwill's personal website",
-  description: "Multi purpose website by Qwill made with Next.js",
+  description: "Multi purpose website by Quill made with Next.js",
+  openGraph: {
+    title: "Qwill's personal website",
+    description: "Multi purpose website by Quill made with Next.js",
+    url: "https://qtqwill.dev", 
+    siteName: "QtQwill",
+    type: "website",
+    // images: [
+    //   { url: '/favicon-32x32.png', width: 32, height: 32, alt: 'QtQwill Favicon' },
+    // ],
+  },
 };
 
 export default function RootLayout({

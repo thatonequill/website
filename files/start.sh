@@ -25,4 +25,4 @@ npm run db:seed
 
 # 6. Start the server
 echo "--- Starting Next.js ---"
-npm run dev -- -p 3333
+npm run dev -- -p 3000
