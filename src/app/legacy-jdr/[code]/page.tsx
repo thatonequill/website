@@ -15,7 +15,7 @@ export default async function Page({
 
   if (!pseudo) {
     // Redirect back to login if no pseudo provided
-    redirect('/jdr')
+    redirect('/legacy-jdr')
   }
 
   // 1. Fetch Room + Related Data
@@ -48,7 +48,7 @@ export default async function Page({
   
   // If player isn't in DB and not GM, they shouldn't be here (or we auto-create them)
   if (!isGM && !currentPlayer) {
-     redirect('/jdr') 
+     redirect('/legacy-jdr') 
   }
 
   return (
