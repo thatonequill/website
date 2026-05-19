@@ -50,10 +50,10 @@
     --card: #1c1917; /* Stone-900 */
     --card-foreground: #f8fafc; /* Slate-50 */
 
-    --primary: oklch(64.5% 0.246 16.439); /* Amber-600 */
+    --primary: #ff2056; /* Amber-600 */
     --primary-foreground: #0c0a09; /* Stone-950 */
 
-    --secondary: oklch(70.4% 0.191 22.216); /* Red-400 */
+    --secondary: #ff6467; /* Red-400 */
     --secondary-foreground: #0c0a09; /* Stone-950 */
 
     --muted: #292524; /* Stone-800 */
