@@ -32,7 +32,7 @@
     --primary: #be185d; /* Rose-700 (Pink/Red) */
     --primary-foreground: #ffffff; /* White */
 
-    --secondary: oklch(59.2% 0.249 0.584); /* Pink-600 */
+    --secondary: #e60076; /* Pink-600 */
     --secondary-foreground: #ffffff; /* White */
 
     --muted: #fde2e4; /* Rose-100 */
