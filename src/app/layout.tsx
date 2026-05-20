@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     url: "https://qtqwill.dev", 
     siteName: "QtQwill",
     type: "website",
-    // images: [
-    //   { url: '/favicon-32x32.png', width: 32, height: 32, alt: 'QtQwill Favicon' },
-    // ],
+    images: [
+      { url: '/images/LandingPage.avif', width: 1920, height: 1080, alt: 'QtQwill\'s Landing Page' },
+    ],
   },
   icons: {
     icon: [
