@@ -16,7 +16,7 @@ const TimelineItem = ({ title, place, period, desc }: any) => (
   <div className="relative pl-8 pb-8 border-l-2 border-muted last:pb-0 last:border-l-0">
     <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-card"></div>
     <h4 className="text-lg font-bold text-card-foreground">{title}</h4>
-    <div className="text-sm font-semibold text-primary/80 mb-1">{period}</div>
+    <div className="text-sm font-semibold text-primary/80 mb-1 website-font">{period}</div>
     <div className="text-sm text-muted-foreground italic mb-2">{place}</div>
     <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
   </div>
@@ -121,7 +121,7 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
               className="w-32 h-32 mx-auto lg:mx-0 rounded-full bg-gradient-to-br from-primary to-purple-600 mb-6 border-4 border-card shadow-md flex items-center justify-center print:w-24 print:h-24 print:mb-4"
             />
             <h1 className="text-2xl font-extrabold text-foreground leading-tight mb-2">
-              Paul-Elouan <br/>
+              Paul-Elouan <br/> {/* Website titles */}
               <span className="text-primary">Guyard-Lecerf</span>
             </h1>
             <p className="text-base font-medium text-muted-foreground">
@@ -153,7 +153,7 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
 
           {/* Languages */}
           <div>
-            <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 uppercase text-xs tracking-wider">
+            <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 uppercase text-xs tracking-wider website-font">
               <User size={16} className="text-primary" /> {t.sections.languages}
             </h3>
             <div className="space-y-2 text-sm">
@@ -170,7 +170,7 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
 
           {/* Soft Skills */}
           <div>
-            <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 uppercase text-xs tracking-wider">
+            <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 uppercase text-xs tracking-wider website-font">
               <Heart size={16} className="text-primary" /> {t.sections.softSkills}
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -184,7 +184,7 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
 
           {/* Tech Stack (Compact) */}
           <div>
-             <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 uppercase text-xs tracking-wider">
+             <h3 className="font-bold text-foreground mb-4 flex items-center gap-2 uppercase text-xs tracking-wider website-font">
               <Code2 size={16} className="text-primary" /> {t.sections.programming}
             </h3>
             <div className="grid grid-cols-2 gap-2 text-xs font-mono text-muted-foreground">
@@ -200,7 +200,7 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
         {/* --- RIGHT CONTENT (Competencies & Education) --- */}
         <div className="lg:col-span-8 p-8 md:p-12 space-y-12 bg-card">
           
-          {/* SECTION 1: COMPETENCIES (The "Advanced" Part) */}
+          {/* SECTION 1: COMPETENCIES (The "Advanced" Part) - Website titles */}
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -219,7 +219,7 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
             </div>
           </div>
 
-          {/* SECTION 2: EDUCATION */}
+          {/* SECTION 2: EDUCATION - Website titles */}
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-lg bg-primary/10 text-primary">
@@ -247,7 +247,7 @@ export default function AdvancedResume({ lang }: AdvancedResumeProps) {
           </div>
 
           {/* SECTION 3: INTERESTS */}
-          <div className="bg-muted/30 rounded-2xl p-6 border border-border flex gap-4 items-start">
+          <div className="bg-muted/30 rounded-2xl p-6 border border-border flex gap-4 items-start website-font">
              <Palette className="text-primary mt-1" size={20} />
              <div>
                 <h4 className="font-bold text-foreground mb-1">{t.sections.interests}</h4>

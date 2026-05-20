@@ -33,17 +33,17 @@ export default function HSRBuilderPage() {
       <BenchHeader />
       
       <main className="max-w-6xl w-full mx-auto p-4 md:p-6 lg:p-8 space-y-8">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight" style={{ color: colors.primary }}>
+        <div className="bench-font">
+          <h1 className="text-3xl font-bold tracking-tight bench-font" style={{ color: colors.primary }}>
             Create Honkai: Star Rail Build
           </h1>
           <p style={{ color: colors.secondary }}>Static prototype matching Prisma schema</p>
         </div>
 
         <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-          {/* Character & Traces */}
+          {/* Character & Traces - Bench titles */}
           <div className="p-6 rounded-xl border-2 space-y-4" style={{ backgroundColor: colors.card, borderColor: colors.border }}>
-            <h2 className="text-xl font-bold border-b pb-2" style={{ borderColor: colors.border }}>Character</h2>
+            <h2 className="text-xl font-bold border-b pb-2 bench-font" style={{ borderColor: colors.border }}>Character</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-1">
                 <label className="text-sm font-medium">Character</label>
@@ -84,7 +84,7 @@ export default function HSRBuilderPage() {
 
           {/* Light Cone */}
           <div className="p-6 rounded-xl border-2 space-y-4" style={{ backgroundColor: colors.card, borderColor: colors.border }}>
-            <h2 className="text-xl font-bold border-b pb-2" style={{ borderColor: colors.border }}>Light Cone</h2>
+            <h2 className="text-xl font-bold border-b pb-2 bench-font" style={{ borderColor: colors.border }}>Light Cone</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-1">
                 <label className="text-sm font-medium">Light Cone</label>
@@ -105,7 +105,7 @@ export default function HSRBuilderPage() {
 
           {/* Relics */}
           <div className="p-6 rounded-xl border-2 space-y-4" style={{ backgroundColor: colors.card, borderColor: colors.border }}>
-            <h2 className="text-xl font-bold border-b pb-2" style={{ borderColor: colors.border }}>Relics</h2>
+            <h2 className="text-xl font-bold border-b pb-2 bench-font" style={{ borderColor: colors.border }}>Relics</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {[1, 2, 3, 4, 5, 6].map((slot) => (
                 <div key={slot} className="p-4 rounded-lg border space-y-3" style={{ backgroundColor: colors.muted, borderColor: colors.border }}>

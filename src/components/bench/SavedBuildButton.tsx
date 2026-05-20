@@ -47,7 +47,7 @@ export function SavedBuildButton({
 
             {/* Text Information */}
             <div className="flex flex-col">
-              <span className="text-lg font-black tracking-wide text-card-foreground transition-colors drop-shadow-sm group-hover:text-primary">
+              <span className="text-lg font-black tracking-wide text-card-foreground transition-colors drop-shadow-sm group-hover:text-primary bench-font">
                 {name}
               </span>
               <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">

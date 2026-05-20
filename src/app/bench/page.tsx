@@ -20,7 +20,7 @@ export default function LoginPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary text-primary-foreground text-3xl font-black mb-4 shadow-lg shadow-primary/20">
             B
           </div>
-          <h1 className="text-3xl font-black tracking-tight text-card-foreground">
+          <h1 className="text-3xl font-black tracking-tight text-card-foreground bench-font">
             BENCH<span className="text-primary">.</span>
           </h1>
           <p className="text-muted-foreground mt-2 font-medium">

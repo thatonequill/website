@@ -18,7 +18,7 @@ export default async function TrackerPage() {
   return (
     <div className="max-w-4xl mx-auto py-20 px-4 space-y-12">
       <div>
-        <h1 className="text-3xl font-bold text-foreground flex items-center gap-3">
+        <h1 className="text-3xl font-bold text-foreground flex items-center gap-3 website-font">
           <Briefcase className="text-primary" /> Application Tracker
         </h1>
         <p className="text-muted-foreground mt-2">
@@ -28,7 +28,7 @@ export default async function TrackerPage() {
 
       {/* ADD APPLICATION FORM */}
       <div className="bg-card border border-border p-6 rounded-2xl shadow-sm">
-        <h2 className="text-lg font-bold mb-4">Add New Application</h2>
+        <h2 className="text-lg font-bold mb-4 website-font">Add New Application</h2>
         <form action={addApplication} className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text" name="company" placeholder="Company Name" required
@@ -68,7 +68,7 @@ export default async function TrackerPage() {
         {applications.map((app) => (
           <div key={app.id} className="bg-card border border-border p-5 rounded-xl flex flex-col md:flex-row justify-between md:items-center gap-4">
             <div>
-              <h3 className="font-bold text-foreground text-lg flex items-center gap-2">
+              <h3 className="font-bold text-foreground text-lg flex items-center gap-2 website-font">
                 <Building size={16} className="text-muted-foreground" /> {app.company}
               </h3>
               <p className="text-muted-foreground text-sm font-medium">{app.role}</p>

@@ -30,7 +30,7 @@ const ProjectCard = ({ project, lang }: { project: any; lang: string }) => {
             <div className="mb-6">
               <div className="flex justify-between items-start gap-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl font-bold text-card-foreground group-hover:text-primary transition-colors website-font">
                     {project.title}
                   </h3>
                   <p className="text-sm text-muted-foreground font-medium mt-1">

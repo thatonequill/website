@@ -1,15 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
-});
+// No font imports needed here, as they are handled by the root layout
+// and applied as CSS variables to the <html> tag.
+// This layout will inherit those variables.
 
 export const viewport: Viewport = {
 	themeColor: '#be185d',
@@ -40,13 +32,12 @@ export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
-}>) {
-	return (
-		<body
-			className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-		>
+}>) { // This layout is nested under the root layout, so it inherits the root fonts.
+	return ( // No specific font variables are applied directly to the body here, they are inherited from <html>.
+		<>
 			{/* <Analytics /> */}
 			{children}
-		</body>
+		</>
+			
 	);
 }

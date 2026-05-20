@@ -18,6 +18,11 @@
     --color-muted-foreground: var(--muted-foreground);
 
     --color-border: var(--border);
+
+    --font-default: var(--font-default);
+    --font-website-title: var(--font-website-title);
+    --font-bench-title: var(--font-bench-title);
+    --font-crux-title: var(--font-crux-title);
 }
 
 /* 2. Define the actual colors (Light Mode) */
@@ -67,6 +72,7 @@
     body {
         background-color: var(--background);
         color: var(--foreground);
+        font-family: var(--font-default); /* Apply default font to body */
         /* Smooth transition for theme toggle */
         transition-property:
             color, background-color, border-color, text-decoration-color, fill,
@@ -166,4 +172,28 @@
     li {
         break-inside: avoid;
     }
+}
+
+/* jersey-10-regular */
+.bench-font {
+    /* Bench titles */
+    font-family: var(--font-bench-title);
+}
+
+/* sniglet-regular */
+.website-font {
+    /* Website and CV Maker titles */
+    font-family: var(--font-website-title);
+}
+
+/* modern-antiqua-regular */
+.crux-font {
+    /* JDR App titles */
+    font-family: var(--font-crux-title);
+}
+
+/* elms-sans */
+.default-font {
+    /* Default font everywhere */
+    font-family: var(--font-default);
 }

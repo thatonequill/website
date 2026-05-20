@@ -19,7 +19,7 @@ export default function CVSection({ lang }: CVSectionProps) {
         
         {/* Title Block */}
         <div className="text-center md:text-left">
-          <h2 className="text-3xl font-bold mb-2 flex items-center justify-center md:justify-start gap-3">
+          <h2 className="text-3xl font-bold mb-2 flex items-center justify-center md:justify-start gap-3 website-font">
             <FileText className="text-primary" />
             {lang === 'fr' ? 'Mon Curriculum Vitae' : 'My Resume'}
           </h2>

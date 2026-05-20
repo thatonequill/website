@@ -59,7 +59,7 @@ export default function HomePage() {
               exit={{ opacity: 0, scale: 1, y: 10 }}
               transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
             >
-              <h2 className="text-xl font-bold tracking-tight mb-2">Welcome</h2>
+              <h2 className="text-xl font-bold tracking-tight mb-2 website-font">Welcome</h2>
               <p className="text-sm text-[var(--muted-foreground)] mb-6">
                 Navigate through my different projects!
               </p>

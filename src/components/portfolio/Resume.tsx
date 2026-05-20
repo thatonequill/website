@@ -207,7 +207,7 @@ const resumeData = {
 
 const SectionTitle = ({ icon: Icon, title }: { icon: any, title: string }) => (
   // Reduced margin-bottom for print
-  <div className="flex items-center gap-3 mb-6 print:mb-3">
+  <div className="flex items-center gap-3 mb-6 print:mb-3 website-font">
     <div className="p-2 rounded-lg bg-primary/10 text-primary print:p-1">
       <Icon size={20} className="print:w-4 print:h-4" />
     </div>

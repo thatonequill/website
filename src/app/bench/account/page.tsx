@@ -12,8 +12,8 @@ export default function accountPage() {
 			
 			<main className="flex flex-col items-center justify-content gap-4 p-4 max-w-4xl mx-auto w-full">
 				
-				{/* Genshin builds */}
-				<h2 className="text-3xl font-black mb-4 mt-4 text-foreground">Genshin Builds</h2>
+				{/* Genshin builds - Bench titles */}
+				<h2 className="text-3xl font-black mb-4 mt-4 text-foreground bench-font">Genshin Builds</h2>
 				<section className="grid grid-cols-3 gap-4">
 					<SavedBuildButton
 						id="1"
@@ -35,8 +35,8 @@ export default function accountPage() {
 					/>
 				</section>
 
-				{/* HSR builds */}
-				<h2 className="text-3xl font-black mb-4 mt-4 text-foreground">HSR Builds</h2>
+				{/* HSR builds - Bench titles */}
+				<h2 className="text-3xl font-black mb-4 mt-4 text-foreground bench-font">HSR Builds</h2>
 
 				<section className="grid grid-cols-3 gap-4">
 					<SavedBuildButton
@@ -59,8 +59,8 @@ export default function accountPage() {
 					/>
 				</section>
 				
-				{/* ZZZ builds */}
-				<h2 className="text-3xl font-black mb-4 mt-4 text-foreground">ZZZ Builds</h2>
+				{/* ZZZ builds - Bench titles */}
+				<h2 className="text-3xl font-black mb-4 mt-4 text-foreground bench-font">ZZZ Builds</h2>
 
 				<section className="grid grid-cols-3 gap-4">
 					<SavedBuildButton
