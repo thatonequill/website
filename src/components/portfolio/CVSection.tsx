@@ -67,12 +67,12 @@ export default function CVSection({ lang }: CVSectionProps) {
         <div className="col-start-1 row-start-1 z-0 transition-opacity duration-700 ease-in-out">
           <div className={`${showDiploma ? 'opacity-100' : 'opacity-40'} transition-opacity duration-700 flex flex-col items-center gap-4`}>
             <img
-              src="/images/dut.avif" 
+              src="/images/assets/dut.avif" 
               alt="DUT Diploma"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-2xl my-12"
             />
             <a 
-              href="/images/dut.png" 
+              href="/images/assets/dut.png" 
               download="DUT_Paul-Elouan_Guyard-Lecerf.png"
             >
               <button className="bg-primary text-white font-bold py-2 px-4 rounded-full shadow-lg hover:bg-primary/90 transition-colors flex items-center gap-2">

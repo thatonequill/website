@@ -44,7 +44,7 @@ export default function HomePage() {
               }}
             />
             {/* The logo image */}
-            <img src="/images/logo.avif" alt="logo" style={{ width: '4em', height: '4em', position: 'relative', zIndex: 0 }} />
+            <img src="/images/icons/logo.avif" alt="logo" style={{ width: '4em', height: '4em', position: 'relative', zIndex: 0 }} />
           </div>
         </motion.div>
 
@@ -65,10 +65,10 @@ export default function HomePage() {
               </p>
               
               <nav className="flex flex-col gap-3">
-                <LinkButton href='/pages/portfolio' desc='My Portfolio' icon='/images/logo.avif' />
-                <LinkButton href='https://cvmaker.qtqwill.dev' desc='CV Maker' icon='/images/cvmaker.avif' />
-                <LinkButton href='https://crux.qtqwill.dev' desc='Crux (WIP)' icon='/images/crux.avif' />
-                <LinkButton href='https://bench.qtqwill.dev' desc='BENCH (WIP)' icon='/images/bench.avif' />
+                <LinkButton href='/pages/portfolio' desc='My Portfolio' icon='/images/icons/logo.avif' />
+                <LinkButton href='https://cvmaker.qtqwill.dev' desc='CV Maker' icon='/images/icons/cvmaker.avif' />
+                <LinkButton href='https://crux.qtqwill.dev' desc='Crux (WIP)' icon='/images/icons/crux.avif' />
+                <LinkButton href='https://bench.qtqwill.dev' desc='BENCH (WIP)' icon='/images/icons/bench.avif' />
               </nav>
             </motion.div>
           )}
