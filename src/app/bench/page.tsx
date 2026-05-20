@@ -91,9 +91,9 @@ export default function LoginPage() {
 						href="/bench/genshin"
 						className="group text-center bg-[#fdfaf3] rounded p-3 border-2 border-[#5e9296] transition-all hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer"
 					>
-						<p className="text-sm font-black uppercase text-[#4b443c] group-hover:text-[#d4ad68] transition-colors">
+						<h4 className="text-xl font-black uppercase text-[#4b443c] group-hover:text-[#d4ad68] transition-colors bench-font">
 							Genshin
-						</p>
+						</h4>
 						<div className="h-1.5 w-full bg-[#4b443c]/10 rounded-full mt-2 overflow-hidden">
 							<div className="h-full bg-[#d4ad68] w-full" />
 						</div>
@@ -104,9 +104,9 @@ export default function LoginPage() {
 						href="/bench/hsr"
 						className="group text-center bg-[#f8f7ff] rounded p-3 border-2 border-[#4facfe] transition-all hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer"
 					>
-						<p className="text-sm font-black uppercase text-[#3d3a52] group-hover:text-[#7c5dfa] transition-colors">
+						<h4 className="text-xl font-black uppercase text-[#3d3a52] group-hover:text-[#7c5dfa] transition-colors bench-font">
 							HSR
-						</p>
+						</h4>
 						<div className="h-1.5 w-full bg-[#3d3a52]/10 rounded-full mt-2 overflow-hidden">
 							<div className="h-full bg-[#7c5dfa] w-full" />
 						</div>
@@ -117,9 +117,9 @@ export default function LoginPage() {
 						href="/bench/zzz"
 						className="group text-center bg-[#fefce8] rounded p-3 border-2 border-[#f43f5e] transition-all hover:scale-105 active:scale-95 hover:shadow-md cursor-pointer"
 					>
-						<p className="text-sm font-black uppercase text-[#18181b] group-hover:text-[#facc15] transition-colors">
+						<h4 className="text-xl font-black uppercase text-[#18181b] group-hover:text-[#facc15] transition-colors bench-font">
 							ZZZ
-						</p>
+						</h4>
 						<div className="h-1.5 w-full bg-[#18181b]/10 rounded-full mt-2 overflow-hidden">
 							<div className="h-full bg-[#facc15] w-full" />
 						</div>

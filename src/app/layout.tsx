@@ -10,7 +10,7 @@ const elmsSans = Elms_Sans({
 });
 
 const sniglet = Sniglet({
-  weight: ["400", "800"], // Sniglet has 400 and 800 weights
+  weight: "400", // Sniglet has 400 and 800 weights
   variable: "--font-website-title",
   subsets: ["latin"],
   display: "swap",
