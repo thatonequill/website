@@ -29,7 +29,7 @@ services:
       - /app/.next       # Keeps Next.js build cache inside the container
       - /app/.next
     environment:
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=${STORAGE_POSTGRES_URL_NON_POOLING}
       - DIRECT_URL=${DIRECT_URL}
       - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
       - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
