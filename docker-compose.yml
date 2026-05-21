@@ -1,19 +1,19 @@
 services:
-  db:
-    image: postgres:15-alpine
-    ports: # Maps host port 4000 to container port 5432 for the database
-      - "4000:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: local_dev_password
-      POSTGRES_DB: local_supabase
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d local_supabase"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+  # db:
+  #   image: postgres:15-alpine
+  #   ports: # Maps host port 4000 to container port 5432 for the database
+  #     - "4000:5432"
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: local_dev_password
+  #     POSTGRES_DB: local_supabase
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U postgres -d local_supabase"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
 
   web:
     build: 
@@ -21,19 +21,26 @@ services:
       dockerfile: Dockerfile.dev
     ports: # Maps host port 3000 to container port 3000 for the Next.js app
       - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - .:/app
       - /app/node_modules # Prevents your local machine's node_modules from conflicting with the container's
       - /app/.next       # Keeps Next.js build cache inside the container
+      - /app/.next
     environment:
-      - DATABASE_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
-      
-      - DIRECT_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
+      - DATABASE_URL=${DATABASE_URL}
+      - DIRECT_URL=${DIRECT_URL}
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
       - TRACKER_ADMIN_PASSWORD=Quill
       
-    depends_on:
-      db:
-        condition: service_healthy
+      # - DATABASE_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
+      # - DIRECT_URL=postgresql://postgres:local_dev_password@db:5432/local_supabase
+      
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
         
 volumes:
   postgres_data:
