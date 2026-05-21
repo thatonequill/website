@@ -41,7 +41,7 @@ export default function Portfolio() {
       <nav className="sticky top-0 z-50 w-full backdrop-blur-md border-b border-border bg-background/80">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="font-bold text-xl flex items-center gap-2 text-primary">
-            <HomeButton icon={Terminal} />
+            <HomeButton />
             <span>DevPortfolio</span>
           </div>
           
