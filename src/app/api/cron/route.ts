@@ -15,26 +15,26 @@ export async function GET(request: Request) {
     await prisma.$queryRaw`SELECT 1`;
 
     // 3. Cleanup old JDR rooms/draws to save space
-    const threeDaysAgo = new Date();
-    threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+    // const threeDaysAgo = new Date();
+    // threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
 
-    // Delete draws older than 3 days
-    await prisma.draw.deleteMany({
-      where: {
-        timestamp: {
-          lt: threeDaysAgo,
-        },
-      },
-    });
+    // // Delete draws older than 3 days
+    // await prisma.draw.deleteMany({
+    //   where: {
+    //     timestamp: {
+    //       lt: threeDaysAgo,
+    //     },
+    //   },
+    // });
     
-    // Delete rooms that haven't been updated in 3 days
-    await prisma.room.deleteMany({
-      where: {
-        updatedAt: {
-          lt: threeDaysAgo,
-        },
-      },
-    });
+    // // Delete rooms that haven't been updated in 3 days
+    // await prisma.room.deleteMany({
+    //   where: {
+    //     updatedAt: {
+    //       lt: threeDaysAgo,
+    //     },
+    //   },
+    // });
 
     return NextResponse.json({ ok: true });
   } catch (error) {
