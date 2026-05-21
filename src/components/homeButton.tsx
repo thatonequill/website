@@ -2,13 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { LucideIcon } from 'lucide-react';
 
-interface HomeButtonProps {
-  icon: LucideIcon;
-}
-
-export default function HomeButton({ 
-  icon: Icon, 
-}: HomeButtonProps) {
+export default function HomeButton() {
   return (
     <Link 
       href={"/"}
@@ -20,10 +14,7 @@ export default function HomeButton({
         transition-all duration-300
       `}
     >
-      <Icon 
-        size={22} 
-        className="group-hover:scale-110 transition-transform duration-300" 
-      />
+    <img src="/images/icons/home.avif" alt="HOME" className='w-7'/>
     </Link>
   );
 }

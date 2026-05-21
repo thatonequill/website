@@ -1,24 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Website
+
+A Next.js project with Supabase local development environment.
+
+## Prerequisites
+
+- Docker with Compose plugin
 
 ## Getting Started
 
-First, run the development server:
+1. Copy the environment template:
+   ```bash
+   cp .env.local.example .env.local
+   ```
 
+2. Start the development stack:
+   ```bash
+   docker compose up
+   ```
+
+The first run will initialize all services automatically. The Next.js app will be available at http://localhost:3000.
+
+## Port Usage
+
+This project owns the following default ports. Running a second instance simultaneously is not supported.
+
+| Service | URL |
+|---|---|
+| Next.js app | http://localhost:3000 |
+| Supabase API (Kong) | http://127.0.0.1:54321 |
+| Supabase DB | postgresql://postgres:postgres@127.0.0.1:54322/postgres |
+| Supabase Studio | http://127.0.0.1:54323 |
+| Supabase Inbucket | http://127.0.0.1:54324 |
+| Supabase Auth | http://127.0.0.1:9999 |
+
+## Database Management
+
+Reset and re-push the Prisma schema:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose run --rm web npx prisma db push
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Seed the database with initial data:
+```bash
+docker compose run --rm web npm run db:seed
+```
 
 ## Learn More
 

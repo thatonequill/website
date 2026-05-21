@@ -207,7 +207,7 @@ const resumeData = {
 
 const SectionTitle = ({ icon: Icon, title }: { icon: any, title: string }) => (
   // Reduced margin-bottom for print
-  <div className="flex items-center gap-3 mb-6 print:mb-3">
+  <div className="flex items-center gap-3 mb-6 print:mb-3 website-font">
     <div className="p-2 rounded-lg bg-primary/10 text-primary print:p-1">
       <Icon size={20} className="print:w-4 print:h-4" />
     </div>
@@ -294,7 +294,7 @@ export default function Resume({ lang = 'en' }: ResumeProps) {
           {/* Profile Header */}
           <div className="text-center lg:text-left mb-10 print:mb-6">
             <img
-              src="/images/pfp.avif"
+              src="/images/assets/pfp.avif"
               alt="Paul-Elouan Guyard-Lecerf"
               className="w-32 h-32 mx-auto lg:mx-0 rounded-full bg-gradient-to-br from-primary to-purple-600 mb-6 border-4 border-card shadow-md flex items-center justify-center print:w-24 print:h-24 print:mb-4"
             />

@@ -17,11 +17,11 @@ sleep 2
 
 # 4. Verify table existence
 echo "--- Verifying Table: jdr.Card ---"
-psql "$DATABASE_URL" -c "\dt jdr.*"
+# psql "$DATABASE_URL" -c "\dt jdr.*"
 
 # 5. Run the SQL seed
 echo "--- Seeding Database ---"
-npm run db:seed
+# npm run db:seed
 
 # 6. Start the server
 echo "--- Starting Next.js ---"

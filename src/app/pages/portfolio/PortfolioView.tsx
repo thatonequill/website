@@ -96,7 +96,7 @@ export default function Portfolio() {
         {/* Code Snippet & Image */}
         <div className="flex-1 w-full max-w-md flex flex-col gap-6 transform hover:scale-[1.02] transition-transform duration-500">
           <img
-            src="/images/pfp.avif"
+            src="/images/assets/pfp.avif"
             alt="Paul-Elouan Guyard-Lecerf"
             className="w-full h-auto rounded-xl shadow-lg object-cover"
           />

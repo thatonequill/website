@@ -28,8 +28,8 @@ export default function InfoCard({
       <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${variants[variant]}`}>
         <Icon size={24} />
       </div>
-      
-      <h3 className="text-xl font-bold mb-2 text-card-foreground">{title}</h3>
+      {/* Website titles */}
+      <h3 className="text-xl font-bold mb-2 text-card-foreground website-font">{title}</h3>
       
       <div className="text-muted-foreground">
         {children}

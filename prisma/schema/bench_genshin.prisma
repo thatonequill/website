@@ -1,0 +1,133 @@
+// File: prisma/schema/bench_genshin.prisma
+// Models for Genshin Impact character tracking and building
+
+enum GenshinElement {
+    PYRO
+    HYDRO
+    ANEMO
+    ELECTRO
+    DENDRO
+    CRYO
+    GEO
+
+    @@schema("bench_genshin")
+}
+
+enum GenshinWeaponType {
+    SWORD
+    CLAYMORE
+    POLEARM
+    BOW
+    CATALYST
+
+    @@schema("bench_genshin")
+}
+
+enum GenshinStat {
+    HP_FLAT
+    HP_PERCENT
+    ATK_FLAT
+    ATK_PERCENT
+    DEF_FLAT
+    DEF_PERCENT
+    CRIT_RATE
+    CRIT_DMG
+    ELEMENTAL_MASTERY
+    ENERGY_RECHARGE
+    HEALING_BONUS
+    PHYSICAL_DMG
+    PYRO_DMG
+    HYDRO_DMG
+    ANEMO_DMG
+    ELECTRO_DMG
+    DENDRO_DMG
+    CRYO_DMG
+    GEO_DMG
+
+    @@schema("bench_genshin")
+}
+
+model GenshinWeapon {
+    id                String             @id @default(cuid())
+    name              String
+    rarity            Rarity
+    weaponType        GenshinWeaponType
+    builds            GenshinBuild[]
+    genshinCharacters GenshinCharacter[]
+
+    @@map("Weapon")
+    @@schema("bench_genshin")
+}
+
+model GenshinCharacter {
+    id              String            @id @default(cuid())
+    name            String
+    rarity          Rarity
+    element         GenshinElement
+    weaponType      GenshinWeaponType
+    genshinWeaponId String
+    signatureWeapon GenshinWeapon     @relation(fields: [genshinWeaponId], references: [id])
+    builds          GenshinBuild[]
+
+    // Base stats @ 90
+    hp               Int
+    atk              Int
+    def              Int
+    critRate         Float
+    critDmg          Float
+    energyRecharge   Float
+    elementalMastery Int
+
+    @@map("Character")
+    @@schema("bench_genshin")
+}
+
+model GenshinArtifact {
+    id    String @id @default(cuid())
+    slot  Int // 1: Flower, 2: Plume, 3: Sands, 4: Goblet, 5: Circlet
+    level Int    @default(0) // 0-20
+    set   String
+
+    mainStat      GenshinStat
+    mainStatValue Float
+
+    subStat1      GenshinStat?
+    subStat1Value Float?
+    subStat2      GenshinStat?
+    subStat2Value Float?
+    subStat3      GenshinStat?
+    subStat3Value Float?
+    subStat4      GenshinStat?
+    subStat4Value Float?
+
+    buildId String
+    build   GenshinBuild @relation(fields: [buildId], references: [id])
+
+    @@map("Artifact")
+    @@schema("bench_genshin")
+}
+
+model GenshinBuild {
+    id   String @id @default(cuid())
+    name String @default("New Build")
+
+    characterId   String
+    character     GenshinCharacter @relation(fields: [characterId], references: [id])
+    level         Int              @default(90)
+    constellation Int              @default(0) // C0-C6
+
+    weaponId    String
+    weapon      GenshinWeapon @relation(fields: [weaponId], references: [id])
+    weaponLevel Int           @default(90)
+    refinement  Int           @default(1) // R1-R5
+
+    artifacts GenshinArtifact[]
+
+    // Talent Levels (1-10, or 13 with buffs)
+    talentNormal Int @default(1)
+    talentSkill  Int @default(1)
+    talentBurst  Int @default(1)
+
+    @@map("Build")
+    @@schema("bench_genshin")
+}
