@@ -10,8 +10,8 @@ export const translations = {
       github: "GitHub"
     },
     hero: {
-      badge: "Open to Work",
-      role: "Student BUT 3 Computer Science",
+      badge: "Open to Work - Apprenticeship",
+      role: "Student Master - IRIS mtp",
       description: "Building scalable systems, optimizing algorithms, and crafting intuitive user interfaces. Passionate about clean code.",
     },
     skills: {
@@ -101,8 +101,8 @@ export const translations = {
       github: "GitHub"
     },
     hero: {
-      badge: "En recherche de stage",
-      role: "Étudiant BUT 3 Informatique",
+      badge: "En recherche d'alternance",
+      role: "Étudiant Master 1 - IRIS mtp",
       description: "Conception de systèmes évolutifs, optimisation d'algorithmes et création d'interfaces intuitives. Passionné par le code propre.",
     },
     skills: {

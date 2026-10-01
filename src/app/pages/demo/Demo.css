@@ -1,0 +1,259 @@
+/* Palette de couleurs pour la démo */
+:root {
+    --demo-primary: #0078d4; /* Bleu Microsoft */
+    --demo-secondary: #2b88d8;
+    --demo-text: #333333;
+    --demo-background: #f5f5f5;
+    --demo-card-bg: #ffffff;
+    --demo-success: #107c10; /* Vert */
+    --demo-error: #d83b01; /* Orange/Rouge */
+    --demo-border: #cccccc;
+}
+
+/* Styles globaux de la démo */
+.DemoApp {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--demo-background);
+    color: var(--demo-text);
+    min-height: 100vh;
+}
+
+.App-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--demo-border);
+}
+
+.App-header h1 {
+    color: var(--demo-primary);
+    margin: 0;
+}
+
+.content-body {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Styles pour la barre de recherche */
+.search-container {
+    margin-bottom: 30px;
+}
+
+.search-field-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--demo-border);
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: var(--demo-card-bg);
+}
+.search-field-wrapper.error {
+    border-color: var(--demo-error);
+}
+
+.input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    padding: 8px;
+    background-color: transparent;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.status-msg {
+    font-size: 0.9rem;
+}
+.status-msg .ok, .status-msg .err {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.ok { color: var(--demo-success); }
+.err { color: var(--demo-error); }
+
+.submit-btn {
+    background-color: var(--demo-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+.submit-btn:hover {
+    background-color: var(--demo-secondary);
+}
+.submit-btn:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+/* Icônes */
+.icon-primary { color: var(--demo-primary); }
+.icon-success { color: var(--demo-success); }
+.icon-error { color: var(--demo-error); }
+
+/* Styles pour les cartes de contact */
+.contact-card {
+    background-color: var(--demo-card-bg);
+    border: 1px solid var(--demo-border);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.contact-link {
+    color: var(--demo-primary); /* Use a blue color for links */
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Styles pour la maquette Ring Central */
+.ring-central-mockup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.rc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.rc-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.rc-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.rc-contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.rc-phone-number {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.rc-call-status {
+    color: #666;
+}
+
+.rc-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.rc-action-btn {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.rc-action-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.rc-action-btn.hang-up {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #c0392b;
+}
+
+.rc-action-btn.hang-up:hover {
+    background-color: #c0392b;
+}
+
+.rc-action-btn.accept {
+    background-color: #2ecc71;
+    color: white;
+    border-color: #27ae60;
+}
+
+.rc-action-btn.accept:hover {
+    background-color: #27ae60;
+}
+
+/* Styles pour le bouton d'appel */
+.call-btn {
+    background-color: #2ecc71; /* Vert */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.call-btn:hover {
+    background-color: #27ae60;
+}
+
+.call-btn:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    color: #666;
+    margin-left: 5px;
+}
+
+.clear-btn:hover {
+    color: #333;
+}

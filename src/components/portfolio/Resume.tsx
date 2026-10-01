@@ -55,11 +55,11 @@ const resumeData = {
     ],
     experience: [
       {
-        "role": "Développeur Stagiaire",
-        "company": "Synergie",
-        "location": "Orvault, France",
-        "period": "Avril 2026 - Juillet 2026 (En cours)",
-        "description": "Conception et développement de micro-projets d'automatisation. Une description détaillée des réalisations sera ajoutée à l'issue du stage."
+        role: "Développeur Stagiaire",
+        company: "Synergie",
+        location: "Orvault, France",
+        period: "Avril 2026 - Juillet 2026",
+        description: "Recherche de solution et développement d'une application Microsoft Teams Tab reliant une base de données clients interne à RingCentral. Création de l'intégration via API pour afficher les fiches clients dans Teams lors d'appels entrants, et réalisation d'un script AutoHotkey pour automatiser le déploiement sur les postes utilisateurs."
       },
       {
         role: "Développeur Stagiaire",
@@ -143,11 +143,11 @@ const resumeData = {
     ],
     experience: [
       {
-        "role": "Software Developer Intern",
-        "company": "Synergie",
-        "location": "Orvault, France",
-        "period": "April 2026 - July 2026 (Ongoing)",
-        "description": "Development of automation mini-projects. A detailed description of missions and technical outcomes will be provided upon completion of the internship."
+        role: "Software Developer Intern",
+        company: "Synergie",
+        location: "Orvault, France",
+        period: "April 2026 - July 2026",
+        description: "Architected and developed a Microsoft Teams Tab application integrating an internal client database with RingCentral. Designed the solution to display client data in Teams during incoming calls using existing APIs, and created an AutoHotkey script for automated deployment across user workstations."
       },
       {
         role: "Intern Developer",
